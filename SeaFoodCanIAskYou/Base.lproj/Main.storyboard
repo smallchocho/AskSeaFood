@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeaFoodCanIAskYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="師傅我想問：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uT-FF-Sbg">
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QN-IQ-EUy">
+                                <color key="backgroundColor" red="0.39426178609027501" green="0.0" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7QN-IQ-EUy" secondAttribute="height" multiplier="123:34" id="0PI-Vs-Us1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="敢問師父">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Oh-ha7">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="85M-tt-d3F"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="sOg-rW-gGf"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29019607843137252" green="0.0" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qyh-Oh-ha7" secondAttribute="trailing" id="1Q4-RZ-pi5"/>
+                            <constraint firstItem="4uT-FF-Sbg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gkg-Ej-xmn"/>
+                            <constraint firstItem="Qyh-Oh-ha7" firstAttribute="top" secondItem="4uT-FF-Sbg" secondAttribute="bottom" constant="20" id="MUS-e7-Go1"/>
+                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RF1-Fg-3sN"/>
+                            <constraint firstItem="Qyh-Oh-ha7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:4" id="SNY-yJ-aJo"/>
+                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="top" secondItem="Qyh-Oh-ha7" secondAttribute="bottom" constant="50" id="U9P-0v-4Ne"/>
+                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:2.5" id="eAD-oo-Ml3"/>
+                            <constraint firstItem="Qyh-Oh-ha7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nRL-RD-ES3"/>
+                            <constraint firstItem="4uT-FF-Sbg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="tLt-G5-AlS"/>
+                            <constraint firstItem="4uT-FF-Sbg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.2" id="vfN-Vd-xbE"/>
+                            <constraint firstItem="Qyh-Oh-ha7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xBr-OO-QxY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="askPickView" destination="Qyh-Oh-ha7" id="zEG-4Z-SlD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120.8" y="37.331334332833585"/>
+        </scene>
+    </scenes>
+</document>
