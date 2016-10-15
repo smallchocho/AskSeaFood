@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="620-zP-dp7">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--敢問師父-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SeaFoodCanIAskYou" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,6 +39,9 @@
                                         <integer key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="3du-zH-5IJ" kind="show" id="IKr-ze-fzz"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Oh-ha7">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -48,29 +51,85 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="sOg-rW-gGf"/>
                                 </connections>
                             </pickerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="師傅去背完成" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-23-TE5">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wC7-23-TE5" secondAttribute="height" multiplier="11:13" id="hWD-Wu-5eR"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.29019607843137252" green="0.0" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Qyh-Oh-ha7" secondAttribute="trailing" id="1Q4-RZ-pi5"/>
+                            <constraint firstItem="wC7-23-TE5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A0Z-5j-l2A"/>
                             <constraint firstItem="4uT-FF-Sbg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gkg-Ej-xmn"/>
+                            <constraint firstItem="wC7-23-TE5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="JGV-j8-Qlf"/>
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="top" secondItem="4uT-FF-Sbg" secondAttribute="bottom" constant="20" id="MUS-e7-Go1"/>
                             <constraint firstItem="7QN-IQ-EUy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RF1-Fg-3sN"/>
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:4" id="SNY-yJ-aJo"/>
-                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="top" secondItem="Qyh-Oh-ha7" secondAttribute="bottom" constant="50" id="U9P-0v-4Ne"/>
+                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="top" secondItem="Qyh-Oh-ha7" secondAttribute="bottom" constant="25" id="U9P-0v-4Ne"/>
                             <constraint firstItem="7QN-IQ-EUy" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:2.5" id="eAD-oo-Ml3"/>
+                            <constraint firstItem="4uT-FF-Sbg" firstAttribute="top" secondItem="wC7-23-TE5" secondAttribute="bottom" constant="5" id="m5x-Pt-4sq"/>
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nRL-RD-ES3"/>
+                            <constraint firstItem="wC7-23-TE5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="220:375" id="s2j-9n-CPx"/>
                             <constraint firstItem="4uT-FF-Sbg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="tLt-G5-AlS"/>
-                            <constraint firstItem="4uT-FF-Sbg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.2" id="vfN-Vd-xbE"/>
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xBr-OO-QxY"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="敢問師父" id="PWw-M2-gVU"/>
                     <connections>
                         <outlet property="askPickView" destination="Qyh-Oh-ha7" id="zEG-4Z-SlD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1060" y="37.331334332833585"/>
+        </scene>
+        <!--讚嘆師父-->
+        <scene sceneID="png-VG-8Ag">
+            <objects>
+                <viewController id="3du-zH-5IJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h2p-1Q-XlU"/>
+                        <viewControllerLayoutGuide type="bottom" id="ADz-P8-gdY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UaH-bv-oKU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="STX-YA-p44">
+                                <frame key="frameInset" minX="30" minY="377" width="144" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2196078431372549" green="0.0" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <navigationItem key="navigationItem" title="讚嘆師父" id="XB6-Vf-mwK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUx-zr-eqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714.4000000000001" y="37.331334332833585"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qMy-Vl-FMZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="620-zP-dp7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vPW-N7-QfB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FNA-Qt-dvH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D0t-9e-KNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="120.8" y="37.331334332833585"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="師傅去背完成" width="320" height="440"/>
+    </resources>
 </document>
