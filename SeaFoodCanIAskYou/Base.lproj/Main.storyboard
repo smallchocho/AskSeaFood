@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="師父我想問：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uT-FF-Sbg">
@@ -40,10 +41,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="3du-zH-5IJ" kind="show" id="IKr-ze-fzz"/>
+                                    <action selector="goToSeaFoodAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mkM-cg-E9l"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Oh-ha7">
+                            <pickerView clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qyh-Oh-ha7">
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="85M-tt-d3F"/>
@@ -52,7 +53,7 @@
                             </pickerView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="師傅去背完成" translatesAutoresizingMaskIntoConstraints="NO" id="wC7-23-TE5">
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="wC7-23-TE5" secondAttribute="height" multiplier="11:13" id="hWD-Wu-5eR"/>
+                                    <constraint firstAttribute="width" secondItem="wC7-23-TE5" secondAttribute="height" multiplier="11:12" id="hWD-Wu-5eR"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -65,7 +66,7 @@
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="top" secondItem="4uT-FF-Sbg" secondAttribute="bottom" constant="20" id="MUS-e7-Go1"/>
                             <constraint firstItem="7QN-IQ-EUy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RF1-Fg-3sN"/>
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:4" id="SNY-yJ-aJo"/>
-                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="top" secondItem="Qyh-Oh-ha7" secondAttribute="bottom" constant="25" id="U9P-0v-4Ne"/>
+                            <constraint firstItem="7QN-IQ-EUy" firstAttribute="top" secondItem="Qyh-Oh-ha7" secondAttribute="bottom" id="U9P-0v-4Ne"/>
                             <constraint firstItem="7QN-IQ-EUy" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1:2.5" id="eAD-oo-Ml3"/>
                             <constraint firstItem="4uT-FF-Sbg" firstAttribute="top" secondItem="wC7-23-TE5" secondAttribute="bottom" constant="5" id="m5x-Pt-4sq"/>
                             <constraint firstItem="Qyh-Oh-ha7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nRL-RD-ES3"/>
@@ -77,6 +78,7 @@
                     <navigationItem key="navigationItem" title="敢問師父" id="PWw-M2-gVU"/>
                     <connections>
                         <outlet property="askPickView" destination="Qyh-Oh-ha7" id="zEG-4Z-SlD"/>
+                        <segue destination="3du-zH-5IJ" kind="show" identifier="goShowAnswerViewController" id="ed7-aq-P1k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,28 +88,140 @@
         <!--讚嘆師父-->
         <scene sceneID="png-VG-8Ag">
             <objects>
-                <viewController id="3du-zH-5IJ" sceneMemberID="viewController">
+                <viewController id="3du-zH-5IJ" customClass="ShowAnswerViewController" customModule="SeaFoodCanIAskYou" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h2p-1Q-XlU"/>
                         <viewControllerLayoutGuide type="bottom" id="ADz-P8-gdY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UaH-bv-oKU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="STX-YA-p44">
-                                <frame key="frameInset" minX="30" minY="377" width="144" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="問題" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumFontSize="15" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KVG-CT-dc1">
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="師傅去背完成2" translatesAutoresizingMaskIntoConstraints="NO" id="sNd-wT-6EK">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sNd-wT-6EK" secondAttribute="height" multiplier="1.35:1" id="Pg2-Lh-R5x"/>
+                                </constraints>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvP-IG-YNW">
+                                <connections>
+                                    <outlet property="dataSource" destination="3du-zH-5IJ" id="t8i-Tj-XKa"/>
+                                    <outlet property="delegate" destination="3du-zH-5IJ" id="JFi-Xw-Pu0"/>
+                                </connections>
+                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3mH-5g-9XB">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzA-HZ-ZWz">
+                                        <color key="backgroundColor" red="0.39215686274509803" green="0.0" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zzA-HZ-ZWz" secondAttribute="height" multiplier="123:34" id="irk-es-ALE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="再問一次">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="askQuestionAgain:" destination="3du-zH-5IJ" eventType="touchUpInside" id="uMM-PM-hC6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nls-Rq-Wjv">
+                                        <color key="backgroundColor" red="0.39215686274509803" green="0.0" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="讚嘆師父">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="2R7-cY-pkR" kind="show" id="3iX-U0-bFv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zzA-HZ-ZWz" firstAttribute="height" secondItem="3mH-5g-9XB" secondAttribute="height" multiplier="41.5:667" constant="36.898050974512742" id="rAu-iI-1I8"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.2196078431372549" green="0.0" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="hvP-IG-YNW" firstAttribute="top" secondItem="KVG-CT-dc1" secondAttribute="bottom" constant="20" id="2i5-u2-7X6"/>
+                            <constraint firstItem="KVG-CT-dc1" firstAttribute="centerX" secondItem="UaH-bv-oKU" secondAttribute="centerX" id="A90-tk-K7E"/>
+                            <constraint firstItem="sNd-wT-6EK" firstAttribute="top" secondItem="h2p-1Q-XlU" secondAttribute="bottom" id="Dec-jO-nR8"/>
+                            <constraint firstItem="sNd-wT-6EK" firstAttribute="centerX" secondItem="UaH-bv-oKU" secondAttribute="centerX" id="Eyd-WK-Wys"/>
+                            <constraint firstItem="sNd-wT-6EK" firstAttribute="height" secondItem="UaH-bv-oKU" secondAttribute="height" multiplier="240:667" id="LJS-vj-425"/>
+                            <constraint firstItem="KVG-CT-dc1" firstAttribute="top" secondItem="sNd-wT-6EK" secondAttribute="bottom" constant="6" id="MHN-iB-JtS"/>
+                            <constraint firstItem="hvP-IG-YNW" firstAttribute="height" secondItem="UaH-bv-oKU" secondAttribute="height" multiplier="1:4" id="gCS-cW-cDv"/>
+                            <constraint firstItem="3mH-5g-9XB" firstAttribute="top" secondItem="hvP-IG-YNW" secondAttribute="bottom" constant="0.5" id="nvh-X8-0vN"/>
+                            <constraint firstAttribute="trailing" secondItem="hvP-IG-YNW" secondAttribute="trailing" id="raD-Sz-qTc"/>
+                            <constraint firstItem="KVG-CT-dc1" firstAttribute="width" secondItem="UaH-bv-oKU" secondAttribute="width" id="rqb-mN-QKO"/>
+                            <constraint firstItem="hvP-IG-YNW" firstAttribute="leading" secondItem="UaH-bv-oKU" secondAttribute="leading" id="tx4-7e-XdJ"/>
+                            <constraint firstItem="3mH-5g-9XB" firstAttribute="centerX" secondItem="UaH-bv-oKU" secondAttribute="centerX" id="tx9-hh-MpC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="讚嘆師父" id="XB6-Vf-mwK"/>
+                    <connections>
+                        <outlet property="answerPickView" destination="hvP-IG-YNW" id="ntq-iU-q8h"/>
+                        <outlet property="questionName" destination="KVG-CT-dc1" id="NDS-nt-rwH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUx-zr-eqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714.4000000000001" y="37.331334332833585"/>
+            <point key="canvasLocation" x="1821.5999999999999" y="36.431784107946029"/>
+        </scene>
+        <!--假日黃線可停車-->
+        <scene sceneID="WBF-49-8vP">
+            <objects>
+                <viewController id="2R7-cY-pkR" customClass="MapViewController" customModule="SeaFoodCanIAskYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cCg-Wu-TYW"/>
+                        <viewControllerLayoutGuide type="bottom" id="RC9-69-YPY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mkx-Vg-bVj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Cr-ML-KVj">
+                                <frame key="frameInset" minY="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyQ-4O-oLw">
+                                <state key="normal" image="NowLocation">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="nowLocation:" destination="2R7-cY-pkR" eventType="touchUpInside" id="fWo-0T-eUB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21568627450980393" green="0.0039215686274509803" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wyQ-4O-oLw" firstAttribute="height" secondItem="mkx-Vg-bVj" secondAttribute="height" multiplier="50:504" id="BIc-wo-gBB"/>
+                            <constraint firstItem="wyQ-4O-oLw" firstAttribute="trailing" secondItem="mkx-Vg-bVj" secondAttribute="trailingMargin" constant="5" id="Rs5-Kh-ud9"/>
+                            <constraint firstItem="wyQ-4O-oLw" firstAttribute="width" secondItem="mkx-Vg-bVj" secondAttribute="width" multiplier="60:320" id="ik4-Mb-v5K"/>
+                            <constraint firstItem="RC9-69-YPY" firstAttribute="top" secondItem="wyQ-4O-oLw" secondAttribute="bottom" constant="5" id="ua9-sm-L7H"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="假日黃線可停車" id="kBM-XZ-aki"/>
+                    <connections>
+                        <outlet property="myMapView" destination="5Cr-ML-KVj" id="Dg4-cZ-wHr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YmR-3t-eOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2568.75" y="36.971830985915496"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qMy-Vl-FMZ">
@@ -125,10 +239,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0t-9e-KNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="120.8" y="37.331334332833585"/>
+            <point key="canvasLocation" x="313" y="37"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NowLocation" width="64" height="64"/>
         <image name="師傅去背完成" width="320" height="440"/>
+        <image name="師傅去背完成2" width="321" height="226"/>
     </resources>
 </document>

@@ -9,8 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-    var askQuestion:[String] = ["中午吃什麼？","Yes Or No?","我該告白嗎？","師傅愛吃什麼？"]
-
+    //轉場到ShowAnswerViewController
+    @IBAction func goToSeaFoodAnswer(_ sender: AnyObject) {
+        _ = askPickView.selectedRow(inComponent: 0)
+        performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
+        
+    }
     @IBOutlet weak var askPickView: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,10 +32,10 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return askQuestion.count
+        return questionAndAnswer.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return askQuestion[row]
+        return questionAndAnswer[row].question
     }
     
     //修改pickerView當中的picker本身的相關設定
@@ -64,23 +68,47 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
 //            let hue = CGFloat(row)/CGFloat(askQuestion.count)
 //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
-        let titleData = askQuestion[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 26.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let titleData = questionAndAnswer[row].question
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
     }
     //調整pickerView的row的寬
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 200
-    }
-     //調整pickerView的row的長
+//    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+//        return 200
+//    }
+     //調整pickerView的row的高
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30
     }
+    ////////增加array解答數量的方法
+    func addStringArray(array:[String]) -> [String]{
+        var addAnswer = array
+        if addAnswer.count > 10{
+            for _ in 0...5{
+                addAnswer += array
+            }
+        }else if addAnswer.count <= 10 && addAnswer.count > 5{
+            for _ in 0...9{
+                addAnswer += array
+            }
+        }else{
+            for _ in 0...20{
+                addAnswer += array
+            }
+        }
+        return addAnswer
+    }
     
-   
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goShowAnswerViewController"{
+            let indexPath = askPickView.selectedRow(inComponent: 0)
+            let destination = segue.destination as! ShowAnswerViewController
+            destination.name = questionAndAnswer[indexPath].question
+            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answer)
+            print(addStringArray(array: questionAndAnswer[indexPath].answer).count)
+        }
+    }
 }
 

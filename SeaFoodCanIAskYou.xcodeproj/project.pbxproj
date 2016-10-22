@@ -12,6 +12,11 @@
 		D0732B8F1DB138E3003A28B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B8D1DB138E3003A28B8 /* Main.storyboard */; };
 		D0732B941DB138E3003A28B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */; };
 		D0732B9E1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */; };
+		D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099057E1DBB482D00BBB377 /* MapKit.framework */; };
+		D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905801DBB48DF00BBB377 /* MapViewController.swift */; };
+		D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */; };
+		D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */; };
+		D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		D0732B931DB138E3003A28B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0732B951DB138E3003A28B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 00-59-00-930.xcassets"; sourceTree = "<group>"; };
+		D099057E1DBB482D00BBB377 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D09905801DBB48DF00BBB377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelloLineInfo.swift; sourceTree = "<group>"; };
+		D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAnswerViewController.swift; sourceTree = "<group>"; };
+		D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +51,7 @@
 			children = (
 				D0732B881DB138E3003A28B8 /* SeaFoodCanIAskYou */,
 				D0732B871DB138E3003A28B8 /* Products */,
+				D099057D1DBB482D00BBB377 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +67,25 @@
 			isa = PBXGroup;
 			children = (
 				D0732B891DB138E3003A28B8 /* AppDelegate.swift */,
+				D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */,
+				D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */,
+				D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */,
 				D0732B8B1DB138E3003A28B8 /* ViewController.swift */,
+				D09905801DBB48DF00BBB377 /* MapViewController.swift */,
 				D0732B8D1DB138E3003A28B8 /* Main.storyboard */,
 				D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */,
 				D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */,
 				D0732B951DB138E3003A28B8 /* Info.plist */,
 			);
 			path = SeaFoodCanIAskYou;
+			sourceTree = "<group>";
+		};
+		D099057D1DBB482D00BBB377 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D099057E1DBB482D00BBB377 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,6 +122,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 8H7X36TF25;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -138,6 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */,
+				D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */,
+				D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */,
+				D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */,
+				D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
