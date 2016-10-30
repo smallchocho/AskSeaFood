@@ -17,7 +17,7 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     //按下問問題按鈕
     @IBAction func askQuestionAgain(_ sender: UIButton) {
         let answerCount = UInt32(ansQuestion!.count)
-        let randomNum = arc4random_uniform(answerCount/2)  + (answerCount/2)
+        let randomNum = arc4random_uniform(answerCount/2) + (answerCount/2)
         for _ in 0...20{
         answerPickView.selectRow(0, inComponent: 0, animated: false)
         answerPickView.selectRow(Int(randomNum), inComponent: 0, animated: true)
@@ -29,6 +29,9 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         questionName.text = name
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.answerPickView.reloadAllComponents()
     }
 
     override func didReceiveMemoryWarning() {

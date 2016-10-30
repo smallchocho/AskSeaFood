@@ -9,21 +9,46 @@
 import UIKit
 
 class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    var questionAndAnswer:[QuestionAndAnswer] = [
+        QuestionAndAnswer(question:"假日哪邊的黃線可以停車？", answer:["你看不到我你看不到我","你看不到我你看不到我"]),
+        QuestionAndAnswer(question:"Yes or No", answer:["Yes","No"]),
+        QuestionAndAnswer(question: "我該告白嗎？", answer: ["現在不衝更待何時","別去，砲灰"]),
+        QuestionAndAnswer(question: "中午吃什麼？", answer: ["霸王豬腳","自助餐","金仙蝦捲","雞肉飯"]),
+        QuestionAndAnswer(question: "師父愛吃什麼？", answer: ["Seafood","應該是Seafood","那就Seafood吧","總之就是Seafood"])
+    ]
+    @IBAction func goToEditQuestion(_ sender: UIButton) {
+        performSegue(withIdentifier: "c", sender: nil)
+    }
+    
     //轉場到ShowAnswerViewController
     @IBAction func goToSeaFoodAnswer(_ sender: AnyObject) {
-        _ = askPickView.selectedRow(inComponent: 0)
-        performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
-        
+        //先取得目前選中的pickRow編號
+        let rowNumber = askPickView.selectedRow(inComponent: 0)
+        //利用pickRow編號取得目前選中的項目內容，如果符合條件就轉到黃線停車頁
+        if questionAndAnswer[rowNumber].question == "假日哪邊的黃線可以停車？"{
+            performSegue(withIdentifier: "GoToYellowLine", sender: nil)
+        }
+        else{
+            performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
+        }
     }
     @IBOutlet weak var askPickView: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //如果loadData()不是一個空字串，也就是如果有存擋過的話，就把loadData()賦值給questionAndAnswer
+        if loadData() != [QuestionAndAnswer](){
+            questionAndAnswer = loadData()
+        }
         //可延遲啟動畫面消失的時間
         Thread.sleep(forTimeInterval: 1.4)
-        //設定pickView的文字顏色
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        //如果loadData()不是一個空字串，也就是如果有存擋過的話，就把loadData()賦值給questionAndAnswer
+        if loadData() != [QuestionAndAnswer](){
+            questionAndAnswer = loadData()
+        }
+        askPickView.reloadAllComponents()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,8 +93,8 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
 //            let hue = CGFloat(row)/CGFloat(askQuestion.count)
 //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
-        let titleData = questionAndAnswer[row].question
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+//        let titleData = questionAndAnswer[row].question
+        let myTitle = NSAttributedString(string: questionAndAnswer[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
@@ -107,8 +132,13 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             let destination = segue.destination as! ShowAnswerViewController
             destination.name = questionAndAnswer[indexPath].question
             destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answer)
-            print(addStringArray(array: questionAndAnswer[indexPath].answer).count)
         }
+        if segue.identifier == "c"{
+            if let destination = segue.destination as? EditQuestion{
+                destination.questionArray = questionAndAnswer
+            }
+        }
+        
     }
 }
 

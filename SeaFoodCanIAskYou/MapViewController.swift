@@ -10,17 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 class MapViewController: UIViewController {
+    //設定一個CLLocationManager物件，此物件需在class中為全域變數
+    let locationManager = CLLocationManager()
     @IBOutlet weak var myMapView: MKMapView!
     @IBAction func nowLocation(_ sender: UIButton) {
         let region = MKCoordinateRegion(center: myMapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         self.myMapView.region = region
-        
-        
     }
-    
-    //設定一個CLLocationManager物件，此物件需在class中為痊癒變數
-    let locationManager = CLLocationManager()
-    
     var firstLaunch = true
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +28,26 @@ class MapViewController: UIViewController {
         for i in 0...(YelloLineData.count - 1){
             addAnnotion(title: YelloLineData[i].titleInfo!, subTitle: YelloLineData[i].parkingTimeInfo!, address: YelloLineData[i].addressInfo!)
         }
-        let region = MKCoordinateRegion(center: myMapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-        self.myMapView.region = region
         // Do any additional setup after loading the view.
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 }
 extension MapViewController:MKMapViewDelegate{
     //當使用者位置被更新時，會做什麼
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         if firstLaunch{
             firstLaunch = false
-            //以使用者最新位置為畫面中心展開地圖
-            let region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-            self.myMapView.region = region
+           goToNowUserLocationRegion()
         }
+    }
+     //以使用者最新位置為畫面中心展開地圖
+    func goToNowUserLocationRegion(){
+        let region = MKCoordinateRegion(center: myMapView.userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        self.myMapView.region = region
     }
      //增加一個地標的方法
     func addAnnotion(title:String,subTitle:String,address:String){
@@ -72,7 +70,9 @@ extension MapViewController:MKMapViewDelegate{
                     //加入subTitle
                     annotation.subtitle = "可停車時段:" + subTitle
                     //秀出剛剛設定好的annotion(也可以將多個annotation合成一個array)
-                    self.myMapView.showAnnotations([annotation], animated: true)
+                    self.myMapView.showAnnotations([annotation], animated: false)
+                    //在每一次新增地標之後重新回到使用者位置，不是好方法～以後再想想怎麼弄
+                    self.goToNowUserLocationRegion()
                 }
             }
         }

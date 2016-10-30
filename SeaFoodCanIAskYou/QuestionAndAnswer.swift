@@ -7,19 +7,52 @@
 //
 
 import Foundation
-class QuestionAndAnswer {
+class QuestionAndAnswer:NSObject,NSCoding, NSCopying  {
     var question = ""
     var answer = [String]()
     init(question q:String,answer a:[String]){
         self.question = q
         self.answer = a
     }
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(question, forKey: "question")
+        aCoder.encode(answer, forKey: "answer")
+    }
+    required init(coder aDecoder: NSCoder) {
+        question = aDecoder.decodeObject(forKey: "question") as! String
+        answer = aDecoder.decodeObject(forKey: "answer") as! [String]
+        
+    }
+    func copy(with zone: NSZone? = nil) -> Any {
+        return QuestionAndAnswer(question: question, answer: answer)
+    }
+    
+
 }
-var questionAndAnswer:[QuestionAndAnswer] = [
-    QuestionAndAnswer(question:"假日哪邊的黃線可以停車？", answer:["你看不到我你看不到我","你看不到我你看不到我"]),
-    QuestionAndAnswer(question:"師父我想問其他的問題", answer:["你看不到我你看不到我","你看不到我你看不到我"]),
-    QuestionAndAnswer(question:"Yes or No", answer:["Yes","No"]),
-    QuestionAndAnswer(question: "我該告白嗎？", answer: ["現在不衝更待何時","別去，砲灰"]),
-    QuestionAndAnswer(question: "中午吃什麼？", answer: ["霸王豬腳","自助餐","金仙蝦捲","雞肉飯"]),
-    QuestionAndAnswer(question: "師父愛吃什麼？", answer: ["Seafood","應該是Seafood","那就Seafood吧","總之就是Seafood"])
-]
+
+
+
+func saveData(savedData data:[QuestionAndAnswer]) {
+    func archiveObject(archivedObject:[QuestionAndAnswer]) -> NSData {
+        return NSKeyedArchiver.archivedData(withRootObject: archivedObject) as NSData
+    }
+    let archivedObject = archiveObject(archivedObject: data)
+    UserDefaults.standard.set(archivedObject, forKey: "questionAndAnswer")
+    UserDefaults.standard.synchronize()
+}
+func loadData() -> [QuestionAndAnswer]{
+    //
+    var data = [QuestionAndAnswer]()
+    if let archivedObject = UserDefaults.standard.object(forKey: "questionAndAnswer") {
+        if let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: archivedObject as! Data) as? [QuestionAndAnswer] {
+            data = unarchivedData
+            return data
+        } else {
+            print("Failed to unarchive journey")
+            return data
+        }
+    }
+    return data
+}
+
+

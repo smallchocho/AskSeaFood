@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* EditAnswer.swift */; };
 		D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0732B891DB138E3003A28B8 /* AppDelegate.swift */; };
 		D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0732B8B1DB138E3003A28B8 /* ViewController.swift */; };
 		D0732B8F1DB138E3003A28B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B8D1DB138E3003A28B8 /* Main.storyboard */; };
@@ -15,11 +16,13 @@
 		D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099057E1DBB482D00BBB377 /* MapKit.framework */; };
 		D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905801DBB48DF00BBB377 /* MapViewController.swift */; };
 		D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */; };
+		D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */; };
 		D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */; };
 		D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D018F4231DC30C0400E58069 /* EditAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswer.swift; sourceTree = "<group>"; };
 		D0732B861DB138E3003A28B8 /* SeaFoodCanIAskYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaFoodCanIAskYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0732B891DB138E3003A28B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0732B8B1DB138E3003A28B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 		D099057E1DBB482D00BBB377 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D09905801DBB48DF00BBB377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelloLineInfo.swift; sourceTree = "<group>"; };
+		D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestion.swift; sourceTree = "<group>"; };
 		D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAnswerViewController.swift; sourceTree = "<group>"; };
 		D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,6 +50,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0230A2A1DBC93CD0025B913 /* AskQuestionView */ = {
+			isa = PBXGroup;
+			children = (
+				D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */,
+				D0732B8B1DB138E3003A28B8 /* ViewController.swift */,
+				D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */,
+				D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */,
+				D018F4231DC30C0400E58069 /* EditAnswer.swift */,
+			);
+			name = AskQuestionView;
+			sourceTree = "<group>";
+		};
+		D0230A2B1DBC93FE0025B913 /* YellowLineView */ = {
+			isa = PBXGroup;
+			children = (
+				D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */,
+				D09905801DBB48DF00BBB377 /* MapViewController.swift */,
+			);
+			name = YellowLineView;
+			sourceTree = "<group>";
+		};
 		D0732B7D1DB138E3003A28B8 = {
 			isa = PBXGroup;
 			children = (
@@ -67,11 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				D0732B891DB138E3003A28B8 /* AppDelegate.swift */,
-				D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */,
-				D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */,
-				D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */,
-				D0732B8B1DB138E3003A28B8 /* ViewController.swift */,
-				D09905801DBB48DF00BBB377 /* MapViewController.swift */,
+				D0230A2A1DBC93CD0025B913 /* AskQuestionView */,
+				D0230A2B1DBC93FE0025B913 /* YellowLineView */,
 				D0732B8D1DB138E3003A28B8 /* Main.storyboard */,
 				D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */,
 				D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */,
@@ -167,6 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */,
+				D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */,
+				D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */,
 				D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */,
 				D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */,
 				D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */,
@@ -296,6 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.SeaFoodCanIAskYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -310,6 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.SeaFoodCanIAskYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
