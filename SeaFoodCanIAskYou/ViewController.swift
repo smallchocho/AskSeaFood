@@ -16,6 +16,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         QuestionAndAnswer(question: "中午吃什麼？", answer: ["霸王豬腳","自助餐","金仙蝦捲","雞肉飯"]),
         QuestionAndAnswer(question: "師父愛吃什麼？", answer: ["Seafood","應該是Seafood","那就Seafood吧","總之就是Seafood"])
     ]
+    
     @IBAction func goToEditQuestion(_ sender: UIButton) {
         performSegue(withIdentifier: "c", sender: nil)
     }
@@ -64,25 +65,25 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     }
     
     //修改pickerView當中的picker本身的相關設定
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        //設定picker是什麼ＵＩ型式
-//        let pickerLabel = UILabel()
-//        //把這個row所要顯示的字存進變數
-//        let titleData = askQuestion[row]
-//        //把上面的變數用NSAttributedString方法設定字型、字體大小、字體顏色
-//        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
-//        //把myTitle存入pickerLabel.attributedText中，完成關於字體的設定
-//        pickerLabel.attributedText = myTitle
-//        
-//        //跟背景相關的顏色、位置等等的設定
-//        //hue這邊猜測是利用將row跟askQuestion.count的比值之後轉成CGFloat
-//        let hue = CGFloat(row)/CGFloat(askQuestion.count)
-//        //然後在這邊設定backgroundColor的顏色設定
-//        pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness:1.0, alpha: 1.0)
-//        //最後指定label怎麼對齊
-//        pickerLabel.textAlignment = .center
-//        return pickerLabel
-//    }
+    //    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    //        //設定picker是什麼ＵＩ型式
+    //        let pickerLabel = UILabel()
+    //        //把這個row所要顯示的字存進變數
+    //        let titleData = askQuestion[row]
+    //        //把上面的變數用NSAttributedString方法設定字型、字體大小、字體顏色
+    //        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+    //        //把myTitle存入pickerLabel.attributedText中，完成關於字體的設定
+    //        pickerLabel.attributedText = myTitle
+    //
+    //        //跟背景相關的顏色、位置等等的設定
+    //        //hue這邊猜測是利用將row跟askQuestion.count的比值之後轉成CGFloat
+    //        let hue = CGFloat(row)/CGFloat(askQuestion.count)
+    //        //然後在這邊設定backgroundColor的顏色設定
+    //        pickerLabel.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness:1.0, alpha: 1.0)
+    //        //最後指定label怎麼對齊
+    //        pickerLabel.textAlignment = .center
+    //        return pickerLabel
+    //    }
     //修改pickerView當中的picker本身的相關設定（較省記憶體的版本）
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel = view as! UILabel!
@@ -90,38 +91,28 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             //if no label there yet
             pickerLabel = UILabel()
             //color the label's background
-//            let hue = CGFloat(row)/CGFloat(askQuestion.count)
-//            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+            //            let hue = CGFloat(row)/CGFloat(askQuestion.count)
+            //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
-//        let titleData = questionAndAnswer[row].question
+        //        let titleData = questionAndAnswer[row].question
         let myTitle = NSAttributedString(string: questionAndAnswer[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
     }
     //調整pickerView的row的寬
-//    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-//        return 200
-//    }
-     //調整pickerView的row的高
+    //    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    //        return 200
+    //    }
+    //調整pickerView的row的高
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30
     }
     ////////增加array解答數量的方法
     func addStringArray(array:[String]) -> [String]{
         var addAnswer = array
-        if addAnswer.count > 10{
-            for _ in 0...5{
-                addAnswer += array
-            }
-        }else if addAnswer.count <= 10 && addAnswer.count > 5{
-            for _ in 0...9{
-                addAnswer += array
-            }
-        }else{
-            for _ in 0...20{
-                addAnswer += array
-            }
+        for _ in 0...10{
+            addAnswer += array
         }
         return addAnswer
     }

@@ -14,7 +14,7 @@ class EditQuestion: UIViewController{
         let newQuestionAlert = UIAlertController(title: "請輸入新問題", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         newQuestionAlert.addTextField { (textField:UITextField) in
             textField.placeholder = "請輸入文字"
-            }
+        }
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
             //如果newQuestionAlert.textFields?[0].text有值且不是空字串，
             //就新增一個QuestionAndAnswer物件到questionArray裡面
@@ -58,8 +58,8 @@ class EditQuestion: UIViewController{
         }
         //然後更新TableView的資料
         self.editQuestionTableView.reloadData()
-//        print("\n\n\n\n現在的題目數量\(questionArray.count)")
-//        print("\n\n\n\n第四題的答案數量\(questionArray[3].answer.count)")
+        //        print("\n\n\n\n現在的題目數量\(questionArray.count)")
+        //        print("\n\n\n\n第四題的答案數量\(questionArray[3].answer.count)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,10 +83,10 @@ extension EditQuestion:UITableViewDelegate,UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = questionArray.count 
+        let numberOfRows = questionArray.count
         return numberOfRows
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = editQuestionTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = questionArray[indexPath.row].question

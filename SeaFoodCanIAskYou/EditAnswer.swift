@@ -40,7 +40,7 @@ class EditAnswer: UIViewController {
     var aSelectedQuestion = "沒有問題"
     var queAndAnsArray:[QuestionAndAnswer] = []
     var questionIndexPath:IndexPath!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedQuestion.title = aSelectedQuestion
@@ -55,7 +55,7 @@ class EditAnswer: UIViewController {
         }
         //然後更新TableView的資料
         self.editAnswerTableView.reloadData()
-//        print("\n\n\n\n現在的答案數量\(queAndAnsArray[questionIndexPath.row].answer.count)")
+        //        print("\n\n\n\n現在的答案數量\(queAndAnsArray[questionIndexPath.row].answer.count)")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

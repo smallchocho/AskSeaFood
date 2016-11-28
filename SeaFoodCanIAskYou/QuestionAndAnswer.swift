@@ -7,7 +7,8 @@
 //
 
 import Foundation
-class QuestionAndAnswer:NSObject,NSCoding, NSCopying  {
+//為了使用UserDefault儲存資料，所以需繼承跟遵從以下類別跟協定
+class QuestionAndAnswer:NSObject,NSCoding{
     var question = ""
     var answer = [String]()
     init(question q:String,answer a:[String]){
@@ -21,13 +22,7 @@ class QuestionAndAnswer:NSObject,NSCoding, NSCopying  {
     required init(coder aDecoder: NSCoder) {
         question = aDecoder.decodeObject(forKey: "question") as! String
         answer = aDecoder.decodeObject(forKey: "answer") as! [String]
-        
     }
-    func copy(with zone: NSZone? = nil) -> Any {
-        return QuestionAndAnswer(question: question, answer: answer)
-    }
-    
-
 }
 
 
