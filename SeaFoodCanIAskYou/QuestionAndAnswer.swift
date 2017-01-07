@@ -5,7 +5,7 @@
 //  Created by Justin Huang on 2016/10/20.
 //  Copyright © 2016年 Justin Huang. All rights reserved.
 //
-
+import UIKit
 import Foundation
 //為了使用UserDefault儲存資料，所以需繼承跟遵從以下類別跟協定
 class QuestionAndAnswer:NSObject,NSCoding{
@@ -24,8 +24,6 @@ class QuestionAndAnswer:NSObject,NSCoding{
         answer = aDecoder.decodeObject(forKey: "answer") as! [String]
     }
 }
-
-
 
 func saveData(savedData data:[QuestionAndAnswer]) {
     func archiveObject(archivedObject:[QuestionAndAnswer]) -> NSData {
@@ -49,5 +47,5 @@ func loadData() -> [QuestionAndAnswer]{
     }
     return data
 }
-
+//以下的func用來生成Alert
 
