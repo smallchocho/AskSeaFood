@@ -8,15 +8,15 @@
 
 import UIKit
 import Foundation
+import RealmSwift
 class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     @IBOutlet weak var answerPickView: UIPickerView!
-    
     @IBOutlet weak var questionName: UILabel!
     var name:String?
-    var ansQuestion:[String]?
+    var ansQuestion:List<Answer>!
     //按下問問題按鈕
     @IBAction func askQuestionAgain(_ sender: UIButton) {
-        c()
+        spinAnswers()
     }
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         self.answerPickView.reloadAllComponents()
     }
     override func viewDidAppear(_ animated: Bool) {
-        c()
+        spinAnswers()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,9 +42,8 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         return ansQuestion!.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return ansQuestion![row]
+        return ansQuestion![row].answer
     }
-    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel = view as! UILabel!
         if view == nil {
@@ -54,13 +53,15 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
             //            let hue = CGFloat(row)/CGFloat(askQuestion.count)
             //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
-        let titleData = ansQuestion![row]
+        let titleData = ansQuestion![row].answer
+        //這啥？
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
     }
-    func c(){
+    
+    func spinAnswers(){
         var animationRepeatTime = 0
         let answerCount = UInt32(ansQuestion!.count)
         let randomNum = arc4random_uniform(answerCount/2) + (answerCount/2)

@@ -7,16 +7,23 @@
 //
 
 import UIKit
-
+import RealmSwift
 class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    var answer1 = Answer(value:["Yes"])
+    var answer2 = Answer(value:["No"])
+    var question1:Results<QuestionAndAnswerDatabase>!
+//    var question1 = QuestionAndAnswerDatabase(value:
+//        ["id":"0","question":"Yes or No","answers":[answer1,answer2]])
+    var answer3 = Answer(value:["現在不衝更待何時？"])
+    var answer4 = Answer(value:["別去，砲灰"])
     var questionAndAnswer:[QuestionAndAnswer] = [
         QuestionAndAnswer(question:"假日哪邊的黃線可以停車？", answer:["你看不到我你看不到我","你看不到我你看不到我"]),
         QuestionAndAnswer(question:"Yes or No", answer:["Yes","No"]),
-        QuestionAndAnswer(question: "我該告白嗎？", answer: ["現在不衝更待何時","別去，砲灰"]),
+        QuestionAndAnswer(question: "我該告白嗎？", answer:["現在不衝更待何時","別去，砲灰"]),
         QuestionAndAnswer(question: "中午吃什麼？", answer: ["霸王豬腳","自助餐","金仙蝦捲","雞肉飯"]),
         QuestionAndAnswer(question: "師父愛吃什麼？", answer: ["Seafood","應該是Seafood","那就Seafood吧","總之就是Seafood"])
     ]
-    
+
     @IBAction func goToEditQuestion(_ sender: UIButton) {
         performSegue(withIdentifier: "c", sender: nil)
     }
@@ -26,28 +33,55 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         //先取得目前選中的pickRow編號
         let rowNumber = askPickView.selectedRow(inComponent: 0)
         //利用pickRow編號取得目前選中的項目內容，如果符合條件就轉到黃線停車頁
-        if questionAndAnswer[rowNumber].question == "假日哪邊的黃線可以停車？"{
-            performSegue(withIdentifier: "GoToYellowLine", sender: nil)
-        }
-        else{
+//        if questionAndAnswer[rowNumber].question == "假日哪邊的黃線可以停車？"{
+//            performSegue(withIdentifier: "GoToYellowLine", sender: nil)
+//        }
+//        else{
             performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
-        }
+//        }
     }
     @IBOutlet weak var askPickView: UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //如果loadData()不是一個空字串，也就是如果有存擋過的話，就把loadData()賦值給questionAndAnswer
-        if loadData() != [QuestionAndAnswer](){
-            questionAndAnswer = loadData()
-        }
+        print(uiRealm.configuration.fileURL as Any)
+            try! uiRealm.write {
+//                let date = Date()
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
+//                let dateString = dateFormatter.string(from: date)
+                question1 = uiRealm.objects(QuestionAndAnswerDatabase.self)
+                if uiRealm.objects(QuestionAndAnswerDatabase.self).first == nil{
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["0","Yes or No",
+                     [Answer(value:["Yes"]),
+                      Answer(value:["No"])]
+                    ], update: true)
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["1","我該告白嗎？",
+                     [Answer(value:["現在不衝更待何時？"]),
+                      Answer(value:["別去，砲灰"])]
+                    ], update: true)
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["2","中午吃什麼？",
+                     [Answer(value:["霸王豬腳"]),
+                      Answer(value:["自助餐"]),
+                      Answer(value:["金仙蝦捲"]),
+                      Answer(value:["雞肉飯"])]
+                    ], update: true)
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["3","師父愛吃什麼？",
+                     [Answer(value:["Seafood"]),
+                      Answer(value:["應該是Seafood"]),
+                      Answer(value:["那就Seafood吧"]),
+                      Answer(value:["總之就是Seafood"])]
+                    ], update: true)
+                }
+            }
+        question1 = uiRealm.objects(QuestionAndAnswerDatabase.self)
         //可延遲啟動畫面消失的時間
         Thread.sleep(forTimeInterval: 1.4)
     }
     override func viewWillAppear(_ animated: Bool) {
-        //如果loadData()不是一個空字串，也就是如果有存擋過的話，就把loadData()賦值給questionAndAnswer
-        if loadData() != [QuestionAndAnswer](){
-            questionAndAnswer = loadData()
-        }
         askPickView.reloadAllComponents()
     }
     override func didReceiveMemoryWarning() {
@@ -58,10 +92,10 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return questionAndAnswer.count
+        return question1.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return questionAndAnswer[row].question
+        return question1[row].question
     }
     
     //修改pickerView當中的picker本身的相關設定
@@ -95,7 +129,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
         //        let titleData = questionAndAnswer[row].question
-        let myTitle = NSAttributedString(string: questionAndAnswer[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: question1[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
@@ -109,10 +143,10 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         return 30
     }
     ////////增加array解答數量的方法
-    func addStringArray(array:[String]) -> [String]{
-        var addAnswer = array
+    func addStringArray(array:List<Answer>) -> List<Answer>{
+        let addAnswer = List<Answer>()
         for _ in 0...10{
-            addAnswer += array
+            addAnswer.append(objectsIn: array)
         }
         return addAnswer
     }
@@ -121,15 +155,14 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         if segue.identifier == "goShowAnswerViewController"{
             let indexPath = askPickView.selectedRow(inComponent: 0)
             let destination = segue.destination as! ShowAnswerViewController
-            destination.name = questionAndAnswer[indexPath].question
-            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answer)
+            destination.name = question1[indexPath].question
+            destination.ansQuestion = addStringArray(array: question1[indexPath].answers)
         }
         if segue.identifier == "c"{
             if let destination = segue.destination as? EditQuestion{
                 destination.questionArray = questionAndAnswer
             }
         }
-        
     }
 }
 

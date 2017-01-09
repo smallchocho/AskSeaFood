@@ -8,11 +8,13 @@
 
 import Foundation
 import RealmSwift
-
+class Answer:Object{
+    dynamic var answer = ""
+}
 class QuestionAndAnswerDatabase: Object {
     dynamic var id = ""
     dynamic var question = ""
-    dynamic var answer:[String] = []
+    var answers = List<Answer>()
     override static func primaryKey() -> String?{
       return "id"
     }
