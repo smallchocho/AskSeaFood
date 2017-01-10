@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		336096EC5EA1E3F60A5117B5 /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */; };
 		D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* EditAnswer.swift */; };
+		D055FD2E1E1F631600517E22 /* QuestionAndAnswerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */; };
 		D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0732B891DB138E3003A28B8 /* AppDelegate.swift */; };
 		D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0732B8B1DB138E3003A28B8 /* ViewController.swift */; };
 		D0732B8F1DB138E3003A28B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B8D1DB138E3003A28B8 /* Main.storyboard */; };
@@ -18,11 +20,13 @@
 		D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */; };
 		D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */; };
 		D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */; };
-		D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.debug.xcconfig"; sourceTree = "<group>"; };
+		BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.release.xcconfig"; sourceTree = "<group>"; };
 		D018F4231DC30C0400E58069 /* EditAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswer.swift; sourceTree = "<group>"; };
+		D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswerDatabase.swift; sourceTree = "<group>"; };
 		D0732B861DB138E3003A28B8 /* SeaFoodCanIAskYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaFoodCanIAskYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0732B891DB138E3003A28B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0732B8B1DB138E3003A28B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +39,7 @@
 		D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelloLineInfo.swift; sourceTree = "<group>"; };
 		D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestion.swift; sourceTree = "<group>"; };
 		D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAnswerViewController.swift; sourceTree = "<group>"; };
-		D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswer.swift; sourceTree = "<group>"; };
+		D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,20 +48,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */,
+				336096EC5EA1E3F60A5117B5 /* Pods_SeaFoodCanIAskYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A40681296C68558143F893DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */,
+				BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D0230A2A1DBC93CD0025B913 /* AskQuestionView */ = {
 			isa = PBXGroup;
 			children = (
-				D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */,
 				D0732B8B1DB138E3003A28B8 /* ViewController.swift */,
 				D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */,
 				D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */,
 				D018F4231DC30C0400E58069 /* EditAnswer.swift */,
+				D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */,
 			);
 			name = AskQuestionView;
 			sourceTree = "<group>";
@@ -77,6 +91,7 @@
 				D0732B881DB138E3003A28B8 /* SeaFoodCanIAskYou */,
 				D0732B871DB138E3003A28B8 /* Products */,
 				D099057D1DBB482D00BBB377 /* Frameworks */,
+				A40681296C68558143F893DD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				D099057E1DBB482D00BBB377 /* MapKit.framework */,
+				D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,9 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0732B981DB138E3003A28B8 /* Build configuration list for PBXNativeTarget "SeaFoodCanIAskYou" */;
 			buildPhases = (
+				7EDD4B0BBA89EAE07B3BC84C /* [CP] Check Pods Manifest.lock */,
 				D0732B821DB138E3003A28B8 /* Sources */,
 				D0732B831DB138E3003A28B8 /* Frameworks */,
 				D0732B841DB138E3003A28B8 /* Resources */,
+				AC29651B6A92E56EA99AA7D2 /* [CP] Embed Pods Frameworks */,
+				4DFEF67F87CF7738FE4A8799 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,7 +156,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Justin Huang";
 				TargetAttributes = {
 					D0732B851DB138E3003A28B8 = {
@@ -183,6 +202,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4DFEF67F87CF7738FE4A8799 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7EDD4B0BBA89EAE07B3BC84C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AC29651B6A92E56EA99AA7D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D0732B821DB138E3003A28B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -191,8 +258,8 @@
 				D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */,
 				D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */,
 				D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */,
-				D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */,
 				D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */,
+				D055FD2E1E1F631600517E22 /* QuestionAndAnswerDatabase.swift in Sources */,
 				D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */,
 				D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
@@ -239,6 +306,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -289,6 +357,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -316,7 +385,9 @@
 		};
 		D0732B991DB138E3003A28B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
@@ -331,7 +402,9 @@
 		};
 		D0732B9A1DB138E3003A28B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
