@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 class EditQuestion: UIViewController{
     //生成題目跟答案的實體
+    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
     var questionArray:[QuestionAndAnswer] = []
     @IBOutlet weak var editQuestionTableView: UITableView!
     //右上角+號按鈕
@@ -21,18 +23,18 @@ class EditQuestion: UIViewController{
                     print("textInTextfield is nil")
                     return
                 }
-                let tempArray = QuestionAndAnswer(question: text, answer: [String]())
-                //然後存入questionArray
-                self.questionArray.append(tempArray)
-                //把上面修改過的資料存入UserDefault
-                saveData(savedData: self.questionArray)
+                //用現在的時間當成key，新增一個新的question，Answers不填入
+                try! uiRealm.write {
+                    let date = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
+                    let dateString = dateFormatter.string(from: date)
+                    uiRealm.create(QuestionAndAnswerDatabase.self, value: [dateString,text,[]], update: true)
+                }
                 self.editQuestionTableView.reloadData()
             }
         }
     }
-
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.editQuestionTableView.delegate = self
@@ -41,14 +43,8 @@ class EditQuestion: UIViewController{
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        //如果發現有存擋就讀檔
-        if loadData() != [QuestionAndAnswer](){
-            questionArray = loadData()
-        }
         //然後更新TableView的資料
         self.editQuestionTableView.reloadData()
-        //        print("\n\n\n\n現在的題目數量\(questionArray.count)")
-        //        print("\n\n\n\n第四題的答案數量\(questionArray[3].answer.count)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,6 +63,47 @@ class EditQuestion: UIViewController{
         }
     }
 }
+//UITableView相關的delegate
+extension EditQuestion:UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return questionAndAnswer.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = editQuestionTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = questionAndAnswer[indexPath.row].question
+        cell.textLabel?.textColor = UIColor.white
+        return cell
+    }
+    //每個row右側的驚嘆號標示
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        //產生一個修改問題文字的提示頁
+        addAlertController(title: self.questionAndAnswer[indexPath.row].question) { (bool:Bool, textInTexfield:String?) in
+            if bool == true{
+                guard let text = textInTexfield  else{
+                    print("textInTexfield is nil")
+                    return
+                }
+                //因為只是修改questionArray的question標題,所以只要修改標題文字
+                try! uiRealm.write {
+                    self.questionAndAnswer[indexPath.row].question = text
+                }
+                self.editQuestionTableView.reloadData()
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //刪除指定的題目組(連答案一起被刪除了)
+        try! uiRealm.write {
+            uiRealm.delete(questionAndAnswer[indexPath.row].answers)
+            uiRealm.delete(questionAndAnswer[indexPath.row])
+        }
+        //重整這個頁面的資料
+        self.editQuestionTableView.reloadData()
+    }
+}
 //刪除或修改Question的func
 extension EditQuestion{
     //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
@@ -81,7 +118,6 @@ extension EditQuestion{
             newQuestionAlert.textFields?.first?.placeholder = nil
             newQuestionAlert.textFields?.first?.text = title
         }
-        
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
             //如果newQuestionAlert.textFields?[0].text有值且不是空字串，
             //就新增一個QuestionAndAnswer物件到questionArray裡面
@@ -97,49 +133,5 @@ extension EditQuestion{
         newQuestionAlert.addAction(okAction)
         newQuestionAlert.addAction(cancelAction)
         self.present(newQuestionAlert, animated: true, completion: nil)
-    }
-}
-
-
-//UITableView相關的delegate
-extension EditQuestion:UITableViewDelegate,UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = questionArray.count
-        return numberOfRows
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = editQuestionTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = questionArray[indexPath.row].question
-        cell.textLabel?.textColor = UIColor.white
-        return cell
-    }
-    //每個row右側的驚嘆號標示
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        //產生一個輸入新問題的提示頁
-        addAlertController(title: self.questionArray[indexPath.row].question) { (bool:Bool, textInTexfield:String?) in
-            if bool == true{
-                guard let text = textInTexfield  else{
-                    print("textInTexfield is nil")
-                    return
-                }
-                //因為只是修改questionArray的question標題,所以只要修改標題文字
-                self.questionArray[indexPath.row].question = text
-                saveData(savedData: self.questionArray)
-                self.editQuestionTableView.reloadData()
-            }
-        }
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //刪除指定的題目組(連答案一起被刪除了)
-        questionArray.remove(at: indexPath.row)
-        //把上面修改過的資料存入UserDefault
-        saveData(savedData: questionArray)
-        //重整這個頁面的資料
-        self.editQuestionTableView.reloadData()
-        
     }
 }

@@ -9,20 +9,8 @@
 import UIKit
 import RealmSwift
 class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-    var answer1 = Answer(value:["Yes"])
-    var answer2 = Answer(value:["No"])
-    var question1:Results<QuestionAndAnswerDatabase>!
-//    var question1 = QuestionAndAnswerDatabase(value:
-//        ["id":"0","question":"Yes or No","answers":[answer1,answer2]])
-    var answer3 = Answer(value:["現在不衝更待何時？"])
-    var answer4 = Answer(value:["別去，砲灰"])
-    var questionAndAnswer:[QuestionAndAnswer] = [
-        QuestionAndAnswer(question:"假日哪邊的黃線可以停車？", answer:["你看不到我你看不到我","你看不到我你看不到我"]),
-        QuestionAndAnswer(question:"Yes or No", answer:["Yes","No"]),
-        QuestionAndAnswer(question: "我該告白嗎？", answer:["現在不衝更待何時","別去，砲灰"]),
-        QuestionAndAnswer(question: "中午吃什麼？", answer: ["霸王豬腳","自助餐","金仙蝦捲","雞肉飯"]),
-        QuestionAndAnswer(question: "師父愛吃什麼？", answer: ["Seafood","應該是Seafood","那就Seafood吧","總之就是Seafood"])
-    ]
+    
+    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
 
     @IBAction func goToEditQuestion(_ sender: UIButton) {
         performSegue(withIdentifier: "c", sender: nil)
@@ -45,11 +33,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         super.viewDidLoad()
         print(uiRealm.configuration.fileURL as Any)
             try! uiRealm.write {
-//                let date = Date()
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
-//                let dateString = dateFormatter.string(from: date)
-                question1 = uiRealm.objects(QuestionAndAnswerDatabase.self)
+                questionAndAnswer = uiRealm.objects(QuestionAndAnswerDatabase.self)
                 if uiRealm.objects(QuestionAndAnswerDatabase.self).first == nil{
                 uiRealm.create(QuestionAndAnswerDatabase.self, value:
                     ["0","Yes or No",
@@ -77,7 +61,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
                     ], update: true)
                 }
             }
-        question1 = uiRealm.objects(QuestionAndAnswerDatabase.self)
+        questionAndAnswer = uiRealm.objects(QuestionAndAnswerDatabase.self)
         //可延遲啟動畫面消失的時間
         Thread.sleep(forTimeInterval: 1.4)
     }
@@ -92,10 +76,10 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return question1.count
+        return questionAndAnswer.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return question1[row].question
+        return questionAndAnswer[row].question
     }
     
     //修改pickerView當中的picker本身的相關設定
@@ -129,7 +113,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
         //        let titleData = questionAndAnswer[row].question
-        let myTitle = NSAttributedString(string: question1[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: questionAndAnswer[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
@@ -150,17 +134,16 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         }
         return addAnswer
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goShowAnswerViewController"{
             let indexPath = askPickView.selectedRow(inComponent: 0)
             let destination = segue.destination as! ShowAnswerViewController
-            destination.name = question1[indexPath].question
-            destination.ansQuestion = addStringArray(array: question1[indexPath].answers)
+            destination.name = questionAndAnswer[indexPath].question
+            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
         }
         if segue.identifier == "c"{
             if let destination = segue.destination as? EditQuestion{
-                destination.questionArray = questionAndAnswer
+                destination.questionAndAnswer = questionAndAnswer
             }
         }
     }
