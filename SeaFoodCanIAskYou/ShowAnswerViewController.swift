@@ -18,7 +18,6 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     @IBAction func askQuestionAgain(_ sender: UIButton) {
         spinAnswers()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         questionName.text = name
@@ -62,7 +61,7 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     }
     
     func spinAnswers(){
-        var animationRepeatTime = 0
+        var animationRepeatTimes = 0
         let answerCount = UInt32(ansQuestion!.count)
         let randomNum = arc4random_uniform(answerCount/2) + (answerCount/2)
         self.answerPickView.selectRow(0, inComponent: 0, animated: false)
@@ -70,8 +69,8 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {(timer:Timer) in
             self.answerPickView.selectRow(0, inComponent: 0, animated: false)
             self.answerPickView.selectRow(Int(randomNum), inComponent: 0, animated: true)
-            animationRepeatTime += 1
-            if animationRepeatTime > 5 {
+            animationRepeatTimes += 1
+            if animationRepeatTimes > 5 {
                 timer.invalidate()
             }
         })

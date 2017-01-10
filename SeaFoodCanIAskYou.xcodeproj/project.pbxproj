@@ -20,7 +20,6 @@
 		D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */; };
 		D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */; };
 		D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */; };
-		D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +39,6 @@
 		D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelloLineInfo.swift; sourceTree = "<group>"; };
 		D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestion.swift; sourceTree = "<group>"; };
 		D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAnswerViewController.swift; sourceTree = "<group>"; };
-		D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswer.swift; sourceTree = "<group>"; };
 		D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,6 @@
 		D0230A2A1DBC93CD0025B913 /* AskQuestionView */ = {
 			isa = PBXGroup;
 			children = (
-				D0F57C521DB87FD900866345 /* QuestionAndAnswer.swift */,
 				D0732B8B1DB138E3003A28B8 /* ViewController.swift */,
 				D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */,
 				D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */,
@@ -159,7 +156,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Justin Huang";
 				TargetAttributes = {
 					D0732B851DB138E3003A28B8 = {
@@ -261,7 +258,6 @@
 				D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */,
 				D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */,
 				D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */,
-				D0F57C531DB87FD900866345 /* QuestionAndAnswer.swift in Sources */,
 				D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */,
 				D055FD2E1E1F631600517E22 /* QuestionAndAnswerDatabase.swift in Sources */,
 				D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */,
@@ -310,6 +306,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -360,6 +357,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -389,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
@@ -405,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;

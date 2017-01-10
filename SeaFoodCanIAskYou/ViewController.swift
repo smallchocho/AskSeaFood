@@ -13,13 +13,13 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
 
     @IBAction func goToEditQuestion(_ sender: UIButton) {
-        performSegue(withIdentifier: "c", sender: nil)
+        performSegue(withIdentifier: "goEditQuestion", sender: nil)
     }
     
     //轉場到ShowAnswerViewController
     @IBAction func goToSeaFoodAnswer(_ sender: AnyObject) {
         //先取得目前選中的pickRow編號
-        let rowNumber = askPickView.selectedRow(inComponent: 0)
+//        let rowNumber = askPickView.selectedRow(inComponent: 0)
         //利用pickRow編號取得目前選中的項目內容，如果符合條件就轉到黃線停車頁
 //        if questionAndAnswer[rowNumber].question == "假日哪邊的黃線可以停車？"{
 //            performSegue(withIdentifier: "GoToYellowLine", sender: nil)
@@ -141,7 +141,7 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
             destination.name = questionAndAnswer[indexPath].question
             destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
         }
-        if segue.identifier == "c"{
+        if segue.identifier == "goEditQuestion"{
             if let destination = segue.destination as? EditQuestion{
                 destination.questionAndAnswer = questionAndAnswer
             }

@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 class EditAnswer: UIViewController {
     var aSelectedQuestion = "沒有問題"
-    var queAndAnsArray:[QuestionAndAnswer] = []
-    var questionIndexPath:IndexPath!
+    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
+    var indexPathOfSelectedQuestion:IndexPath!
     @IBAction func askAnswer(_ sender: UIBarButtonItem) {
         //產生一個輸入新答案的提示頁
         addAlertController(title: nil) {
@@ -20,10 +21,11 @@ class EditAnswer: UIViewController {
                     print("textInTextField is nil")
                     return
                 }
-                //把新的答案存入queAndAnsArray
-                self.queAndAnsArray[self.questionIndexPath.row].answer.append(text)
-                //把上面修改過的資料存入UserDefault
-                saveData(savedData: self.queAndAnsArray)
+                //把新的答案存入questionAndAnswer
+                try! uiRealm.write {
+                    let answer = Answer(value: [text])
+                    self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers.append(answer)
+                }
                 //重整這個頁面的資料
                 self.editAnswerTableView.reloadData()
             }
@@ -34,17 +36,14 @@ class EditAnswer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //表題
         selectedQuestion.title = aSelectedQuestion
         editAnswerTableView.dataSource = self
         editAnswerTableView.delegate = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        //如果發現有存擋就讀檔
-        if loadData() != [QuestionAndAnswer](){
-            queAndAnsArray = loadData()
-        }
-        //然後更新TableView的資料
+        //更新TableView的資料
         self.editAnswerTableView.reloadData()
         //        print("\n\n\n\n現在的答案數量\(queAndAnsArray[questionIndexPath.row].answer.count)")
     }
@@ -54,8 +53,48 @@ class EditAnswer: UIViewController {
     }
 }
 
-
-
+extension EditAnswer:UITableViewDelegate,UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers.count
+        
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = editAnswerTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer
+        cell.textLabel?.textColor = UIColor.white
+        return cell
+    }
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        //產生一個輸入新答案的提示頁
+        addAlertController(title: questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer){
+            (bool:Bool, textInTextField:String?) in
+            if bool == true{
+                guard let text = textInTextField else{
+                    print("textInTextField is nil")
+                    return
+                }
+                //把修改後的答案存進queAndAnsArray
+                try! uiRealm.write {
+                    self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer = text
+                }
+                //重整這個頁面的資料
+                self.editAnswerTableView.reloadData()
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //刪除指定的答案
+        try! uiRealm.write {
+            let deletedAnswer = self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row]
+            uiRealm.delete(deletedAnswer)
+        }
+        //重整這個頁面的資料
+        self.editAnswerTableView.reloadData()
+    }
+}
 //刪除或修改Answer的func
 extension EditAnswer{
     //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
@@ -92,44 +131,3 @@ extension EditAnswer{
 
 
 
-extension EditAnswer:UITableViewDelegate,UITableViewDataSource{
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return queAndAnsArray[questionIndexPath.row].answer.count
-        
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = editAnswerTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = queAndAnsArray[questionIndexPath.row].answer[indexPath.row]
-        cell.textLabel?.textColor = UIColor.white
-        return cell
-    }
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        //產生一個輸入新答案的提示頁
-        addAlertController(title: queAndAnsArray[questionIndexPath.row].answer[indexPath.row]){
-            (bool:Bool, textInTextField:String?) in
-            if bool == true{
-                guard let text = textInTextField else{
-                    print("textInTextField is nil")
-                    return
-                }
-                //把修改後的答案存進queAndAnsArray
-                self.queAndAnsArray[self.questionIndexPath.row].answer[indexPath.row] = text
-                //把上面修改過的資料存入UserDefault
-                saveData(savedData:self.queAndAnsArray)
-                //重整這個頁面的資料
-                self.editAnswerTableView.reloadData()
-            }
-        }
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //刪除指定的答案
-        queAndAnsArray[questionIndexPath.row].answer.remove(at: indexPath.row)
-        //儲存進UserDefault
-        saveData(savedData: queAndAnsArray)
-        //重整這個頁面的資料
-        self.editAnswerTableView.reloadData()
-    }
-}

@@ -11,7 +11,6 @@ import RealmSwift
 class EditQuestion: UIViewController{
     //生成題目跟答案的實體
     var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
-    var questionArray:[QuestionAndAnswer] = []
     @IBOutlet weak var editQuestionTableView: UITableView!
     //右上角+號按鈕
     @IBAction func addNewQuestion(_ sender: UIBarButtonItem) {
@@ -55,9 +54,9 @@ class EditQuestion: UIViewController{
         if segue.identifier == "GoToEditAnswer"{
             if let destination = segue.destination as? EditAnswer{
                 if let indexPath = editQuestionTableView.indexPathForSelectedRow{
-                    destination.queAndAnsArray = questionArray
-                    destination.aSelectedQuestion = questionArray[indexPath.row].question
-                    destination.questionIndexPath = indexPath
+                    destination.questionAndAnswer = questionAndAnswer
+                    destination.aSelectedQuestion = questionAndAnswer[indexPath.row].question
+                    destination.indexPathOfSelectedQuestion = indexPath
                 }
             }
         }
@@ -120,7 +119,7 @@ extension EditQuestion{
         }
         let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
             //如果newQuestionAlert.textFields?[0].text有值且不是空字串，
-            //就新增一個QuestionAndAnswer物件到questionArray裡面
+            //就新增一個QuestionAndAnswer物件到database裡面
             (action:UIAlertAction) in
             let textInTexfield = newQuestionAlert.textFields?.first?.text
             if textInTexfield != nil && textInTexfield != ""{
