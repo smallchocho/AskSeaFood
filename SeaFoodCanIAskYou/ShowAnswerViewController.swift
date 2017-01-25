@@ -14,6 +14,10 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     @IBOutlet weak var questionName: UILabel!
     var name:String?
     var ansQuestion:List<Answer>!
+    //按下讚嘆師父按鈕
+    @IBAction func thankSeaFood(_ sender: UIButton) {
+        openUrlInSafari(url:"https://www.facebook.com/SeaFoodCanIAskYou/")
+    }
     //按下問問題按鈕
     @IBAction func askQuestionAgain(_ sender: UIButton) {
         spinAnswers()
@@ -85,4 +89,12 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
      }
      */
     
+}
+//擴充方法
+extension ShowAnswerViewController{
+    func openUrlInSafari(url:String){
+        if let urlOfSafari = URL(string:url){
+            UIApplication.shared.open(urlOfSafari, options: [:], completionHandler: nil)
+        }
+    }
 }
