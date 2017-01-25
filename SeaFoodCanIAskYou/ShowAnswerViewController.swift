@@ -12,7 +12,12 @@ import RealmSwift
 class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     @IBOutlet weak var answerPickView: UIPickerView!
     @IBOutlet weak var questionName: UILabel!
+    @IBOutlet weak var sinPowerNumber: UILabel!
+    @IBOutlet weak var sinPowerBar: UIImageView!
+    @IBOutlet weak var barHeightConstraint: NSLayoutConstraint!
+    
     var name:String?
+    var sinPowerCounter = 0
     var ansQuestion:List<Answer>!
     //按下讚嘆師父按鈕
     @IBAction func thankSeaFood(_ sender: UIButton) {
@@ -21,6 +26,13 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     //按下問問題按鈕
     @IBAction func askQuestionAgain(_ sender: UIButton) {
         spinAnswers()
+        sinPowerCounter += 10
+        UIView.animate(withDuration: 0.5) {
+            self.barHeightConstraint.constant += 10
+            self.view.layoutIfNeeded()
+        }
+        self.sinPowerNumber.text = String(self.sinPowerCounter)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
