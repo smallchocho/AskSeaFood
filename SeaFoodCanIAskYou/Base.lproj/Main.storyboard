@@ -197,7 +197,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJi-rw-e15">
-                                <rect key="frame" x="307" y="247" width="42.5" height="30"/>
+                                <rect key="frame" x="307" y="244" width="42.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -219,7 +219,7 @@
                             <constraint firstItem="V3X-5w-3Qz" firstAttribute="centerX" secondItem="obh-pQ-AHt" secondAttribute="centerX" id="MtI-XV-crR"/>
                             <constraint firstItem="V3X-5w-3Qz" firstAttribute="width" secondItem="obh-pQ-AHt" secondAttribute="width" multiplier="1:2" id="TOc-jW-IET"/>
                             <constraint firstItem="KVG-CT-dc1" firstAttribute="top" secondItem="obh-pQ-AHt" secondAttribute="bottom" constant="6" id="Xxr-dY-Dks"/>
-                            <constraint firstItem="obh-pQ-AHt" firstAttribute="top" secondItem="gJi-rw-e15" secondAttribute="bottom" constant="-3" id="aYg-Sw-Qet"/>
+                            <constraint firstItem="obh-pQ-AHt" firstAttribute="top" secondItem="gJi-rw-e15" secondAttribute="bottom" id="aYg-Sw-Qet"/>
                             <constraint firstItem="gJi-rw-e15" firstAttribute="width" secondItem="obh-pQ-AHt" secondAttribute="width" multiplier="1:2" id="dKA-TA-cih"/>
                             <constraint firstItem="gJi-rw-e15" firstAttribute="centerX" secondItem="obh-pQ-AHt" secondAttribute="centerX" id="fdk-mc-VHg"/>
                             <constraint firstItem="hvP-IG-YNW" firstAttribute="height" secondItem="UaH-bv-oKU" secondAttribute="height" multiplier="1:4" id="gCS-cW-cDv"/>
@@ -311,7 +311,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VKV-4N-EvD" id="mgY-gy-gUZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="0.2196078431372549" green="0.0" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
@@ -370,7 +370,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VL5-IZ-AOy" id="9Oo-fT-keX">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" red="0.21568627450980393" green="0.0039215686274509803" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>

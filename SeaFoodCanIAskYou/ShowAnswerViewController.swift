@@ -17,22 +17,29 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     @IBOutlet weak var barHeightConstraint: NSLayoutConstraint!
     
     var name:String?
+    var sinPowerHeight:Float = 1
     var sinPowerCounter = 0
     var ansQuestion:List<Answer>!
     //按下讚嘆師父按鈕
     @IBAction func thankSeaFood(_ sender: UIButton) {
-        openUrlInSafari(url:"https://www.facebook.com/SeaFoodCanIAskYou/")
+        downSinPowerBarAndSinCounter()
     }
     //按下問問題按鈕
     @IBAction func askQuestionAgain(_ sender: UIButton) {
-        spinAnswers()
-        sinPowerCounter += 10
-        UIView.animate(withDuration: 0.5) {
-            self.barHeightConstraint.constant += 10
-            self.view.layoutIfNeeded()
+        if sinPowerCounter < 87{
+            spinAnswers()
         }
-        self.sinPowerNumber.text = String(self.sinPowerCounter)
-        
+        upSinPowerBarAndSinCounter()
+        switch sinPowerCounter {
+        case 50:
+            pressentAlertController(alertTitle: "警告", alertMessage: "提醒施主，業力值已經50%了喔\n請讚嘆師父來消除業力，感恩", actionTitle: "好喔", actionHandler: nil)
+        case 87:
+            pressentAlertController(alertTitle: "業力引爆！", alertMessage: "提醒施主，業力值已到了87%了喔\n不能再高了，請去敢問師父粉絲團按讚表達你的懺悔", actionTitle: "好喔", actionHandler: { (action) in
+                self.openUrlInSafari(url:"https://www.facebook.com/SeaFoodCanIAskYou/")
+            })
+        default:
+            break
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +48,25 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.answerPickView.reloadAllComponents()
+//        self.answerPickView.reloadAllComponents()
+        
     }
     override func viewDidAppear(_ animated: Bool) {
-        spinAnswers()
+        //讀取sinPower資料
+        loadSinPowerInfo()
+        if sinPowerCounter < 87{
+            spinAnswers()
+        }
+        //動畫顯示在畫面上
+        self.sinPowerNumber.text = String(self.sinPowerCounter)
+        self.barHeightConstraint.constant = CGFloat(sinPowerHeight)
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        sinPowerHeight = Float(self.barHeightConstraint.constant)
+        saveSinPowerInfo()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -107,6 +129,53 @@ extension ShowAnswerViewController{
     func openUrlInSafari(url:String){
         if let urlOfSafari = URL(string:url){
             UIApplication.shared.open(urlOfSafari, options: [:], completionHandler: nil)
+        }
+    }
+    func saveSinPowerInfo(){
+        UserDefaults.standard.set(sinPowerHeight, forKey: "sinPowerHeight")
+        UserDefaults.standard.set(sinPowerCounter, forKey: "sinPowerCounter")
+        UserDefaults.standard.synchronize()
+    }
+    func loadSinPowerInfo(){
+        if UserDefaults.standard.float(forKey: "sinPowerHeight") != 0{
+            sinPowerHeight = UserDefaults.standard.float(forKey: "sinPowerHeight")
+        }
+        if UserDefaults.standard.integer(forKey: "sinPowerCounter") != 0{
+            sinPowerCounter = UserDefaults.standard.integer(forKey: "sinPowerCounter")
+        }
+    }
+    func pressentAlertController(alertTitle:String?,alertMessage:String?,actionTitle:String?,actionHandler:((UIAlertAction)->Void)?){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: actionTitle, style: UIAlertActionStyle.cancel, handler: actionHandler)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    func upSinPowerBarAndSinCounter(){
+        if sinPowerCounter < 80{
+            sinPowerCounter += 10
+        }else if sinPowerCounter < 87 && sinPowerCounter >= 80{
+            sinPowerCounter += 7
+        }
+        self.sinPowerNumber.text = String(self.sinPowerCounter)
+        if self.barHeightConstraint.constant < self.view.frame.height * 0.324{
+            self.barHeightConstraint.constant += self.view.frame.height * 0.036
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    func downSinPowerBarAndSinCounter(){
+        if sinPowerCounter <= 80 && sinPowerCounter > 0 {
+            sinPowerCounter -= 10
+        }else if sinPowerCounter > 0{
+            self.sinPowerCounter -= 7
+        }
+        self.sinPowerNumber.text = String(self.sinPowerCounter)
+        if self.barHeightConstraint.constant >= self.view.frame.height * 0.036{
+            self.barHeightConstraint.constant -= self.view.frame.height * 0.036
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
         }
     }
 }
