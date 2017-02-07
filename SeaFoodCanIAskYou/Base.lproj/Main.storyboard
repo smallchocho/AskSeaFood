@@ -122,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1058" y="36"/>
+            <point key="canvasLocation" x="1726" y="133"/>
         </scene>
         <!--讚嘆師父-->
         <scene sceneID="png-VG-8Ag">
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUx-zr-eqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1821.5999999999999" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2212" y="-610"/>
         </scene>
         <!--View Controller By Progaming-->
         <scene sceneID="xTW-WJ-SEc">
@@ -271,10 +271,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cat-vD-VDt"/>
+                    <connections>
+                        <segue destination="3du-zH-5IJ" kind="show" identifier="goShowAnswerViewController" id="Qx9-y1-1P6"/>
+                        <segue destination="7eZ-Cq-5C1" kind="show" identifier="goEditQuestion" id="RkW-Jl-qOX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygk-bs-6LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2653.5999999999999" y="35.532233883058474"/>
+            <point key="canvasLocation" x="1257" y="-610"/>
         </scene>
         <!--假日黃線可停車-->
         <scene sceneID="WBF-49-8vP">
@@ -448,12 +452,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FNA-Qt-dvH"/>
+                        <segue destination="Zbu-Mh-JWh" kind="relationship" relationship="rootViewController" id="lew-YF-9T0"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0t-9e-KNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="37"/>
+            <point key="canvasLocation" x="310" y="-610"/>
         </scene>
     </scenes>
     <resources>
@@ -461,4 +465,8 @@
         <image name="師傅去背完成" width="320" height="440"/>
         <image name="師傅去背完成2" width="321" height="226"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="RkW-Jl-qOX"/>
+        <segue reference="Qx9-y1-1P6"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,40 +7,97 @@
 //
 
 import UIKit
-
+import RealmSwift
 class UIViewControllerByProgaming: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-    var rowArray = ["1","2","3","4","5"]
+    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
+    let questionPickView = UIPickerView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createUi()
-        
+        loadData()
+        //延遲啟動畫面消失的時間
+        Thread.sleep(forTimeInterval: 1.4)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        questionPickView.reloadAllComponents()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //增加array解答數量的方法
+    func addStringArray(array:List<Answer>) -> List<Answer>{
+        let addAnswer = List<Answer>()
+        for _ in 0...10{
+            addAnswer.append(objectsIn: array)
+        }
+        return addAnswer
     }
-    */
+    //傳值
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goShowAnswerViewController"{
+            let indexPath = questionPickView.selectedRow(inComponent: 0)
+            let destination = segue.destination as! ShowAnswerViewController
+            destination.name = questionAndAnswer[indexPath].question
+            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
+        }
+        if segue.identifier == "goEditQuestion"{
+            if let destination = segue.destination as? EditQuestion{
+                destination.questionAndAnswer = questionAndAnswer
+            }
+        }
+    }
+}
+//RealM相關
+extension UIViewControllerByProgaming{
+    func loadData(){
+        //讀取LacalDatabase
+        try! uiRealm.write {
+            questionAndAnswer = uiRealm.objects(QuestionAndAnswerDatabase.self)
+            if uiRealm.objects(QuestionAndAnswerDatabase.self).first == nil{
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["0","Yes or No",
+                     [Answer(value:["Yes"]),
+                      Answer(value:["No"])]
+                    ], update: true)
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["1","我該告白嗎？",
+                     [Answer(value:["現在不衝更待何時？"]),
+                      Answer(value:["別去，砲灰"])]
+                    ], update: true)
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["2","中午吃什麼？",
+                     [Answer(value:["霸王豬腳"]),
+                      Answer(value:["自助餐"]),
+                      Answer(value:["金仙蝦捲"]),
+                      Answer(value:["雞肉飯"])]
+                    ], update: true)
+                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                    ["3","師父愛吃什麼？",
+                     [Answer(value:["Seafood"]),
+                      Answer(value:["應該是Seafood"]),
+                      Answer(value:["那就Seafood吧"]),
+                      Answer(value:["總之就是Seafood"])]
+                    ], update: true)
+            }
+        }
+        questionAndAnswer = uiRealm.objects(QuestionAndAnswerDatabase.self)
+    }
 }
 
+//pickViewDelegate&pickViewDatabase相關
 extension UIViewControllerByProgaming{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return rowArray.count
+        return questionAndAnswer.count
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return rowArray[row]
+        return questionAndAnswer[row].question
     }
     //修改pickerView當中的picker本身的相關設定（較省記憶體的版本）
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -53,7 +110,7 @@ extension UIViewControllerByProgaming{
             //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
         //        let titleData = questionAndAnswer[row].question
-        let myTitle = NSAttributedString(string: rowArray[row], attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: questionAndAnswer[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
         pickerLabel!.attributedText = myTitle
         pickerLabel!.textAlignment = .center
         return pickerLabel!
@@ -68,9 +125,11 @@ extension UIViewControllerByProgaming{
     }
 }
 
-
+//UI相關
 extension UIViewControllerByProgaming{
     func createUi(){
+        //新增NavigationBarTitle
+        self.navigationItem.title = "敢問師父"
         //底色
         self.view.backgroundColor = UIColor(colorLiteralRed: 0.29, green: 0.0, blue: 0.443, alpha: 1.0)
         //師父的圖片
@@ -100,6 +159,20 @@ extension UIViewControllerByProgaming{
         //AutoLayout-size
         askLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
         
+        //作出UiPickView
+        
+        self.view.addSubview(questionPickView)
+        questionPickView.delegate = self
+        questionPickView.dataSource = self
+        questionPickView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width, height: view.frame.height * 0.25)
+        questionPickView.translatesAutoresizingMaskIntoConstraints = false
+        //AutoLayout-position
+        questionPickView.topAnchor.constraint(equalTo: askLabel.bottomAnchor, constant: 20.0).isActive = true
+        questionPickView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
+        //AutoLayout-size
+        questionPickView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0, constant: 0.0).isActive = true
+        questionPickView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25, constant: 0.0).isActive = true
+        
         //作出"敢問師父"Button
         let goToSeaFoodAnswer = UIButton(type: UIButtonType.system)
         goToSeaFoodAnswer.setTitle("敢問師父", for: UIControlState.normal)
@@ -108,22 +181,9 @@ extension UIViewControllerByProgaming{
         goToSeaFoodAnswer.setTitleColor(UIColor.white, for: UIControlState.normal)
         goToSeaFoodAnswer.backgroundColor = UIColor.purple
         goToSeaFoodAnswer.layer.cornerRadius = 20
+        goToSeaFoodAnswer.addTarget(self, action: #selector(self.goToSeaFoodAnswer), for: UIControlEvents.touchUpInside)
         //AutoLayout-size
-       
         
-        //作出UiPickView
-        let answerPickView = UIPickerView()
-        self.view.addSubview(answerPickView)
-        answerPickView.delegate = self
-        answerPickView.dataSource = self
-        answerPickView.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width, height: view.frame.height * 0.25)
-        answerPickView.translatesAutoresizingMaskIntoConstraints = false
-        //AutoLayout-position
-        answerPickView.topAnchor.constraint(equalTo: askLabel.bottomAnchor, constant: 20.0).isActive = true
-        answerPickView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
-        //AutoLayout-size
-        answerPickView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0, constant: 0.0).isActive = true
-        answerPickView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25, constant: 0.0).isActive = true
         
         
         //作出"整理思緒"Button
@@ -136,7 +196,7 @@ extension UIViewControllerByProgaming{
         goToEditQuestion.layer.cornerRadius = 20
         goToEditQuestion.translatesAutoresizingMaskIntoConstraints = false
 //        self.view.addSubview(goToEditQuestion)
-        goToEditQuestion.addTarget(self, action: #selector(self.printsomthing), for: UIControlEvents.touchUpInside)
+        goToEditQuestion.addTarget(self, action: #selector(self.goToEditQuestion), for: UIControlEvents.touchUpInside)
         
         
         //作出兩個Button的StackView
@@ -150,14 +210,17 @@ extension UIViewControllerByProgaming{
         stackView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(stackView)
         //AutoLayout-position
-        stackView.topAnchor.constraint(equalTo: answerPickView.bottomAnchor, constant: 0.0).isActive = true
+        stackView.topAnchor.constraint(equalTo: questionPickView.bottomAnchor, constant: 0.0).isActive = true
         stackView.centerXAnchor.constraint(equalTo: self.view.layoutMarginsGuide.centerXAnchor).isActive = true
         //AutoLayout-size
         stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9).isActive = true
         stackView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.0622).isActive = true
 
     }
-    func printsomthing(){
-        print("yayayayya")
+    func goToSeaFoodAnswer() {
+        performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
+    }
+    func goToEditQuestion() {
+        performSegue(withIdentifier: "goEditQuestion", sender: nil)
     }
 }
