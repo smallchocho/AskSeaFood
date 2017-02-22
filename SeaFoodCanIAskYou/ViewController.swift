@@ -18,15 +18,8 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
     
     //轉場到ShowAnswerViewController
     @IBAction func goToSeaFoodAnswer(_ sender: AnyObject) {
-        //先取得目前選中的pickRow編號
-//        let rowNumber = askPickView.selectedRow(inComponent: 0)
-        //利用pickRow編號取得目前選中的項目內容，如果符合條件就轉到黃線停車頁
-//        if questionAndAnswer[rowNumber].question == "假日哪邊的黃線可以停車？"{
-//            performSegue(withIdentifier: "GoToYellowLine", sender: nil)
-//        }
-//        else{
-            performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
-//        }
+        performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
+        
     }
     @IBOutlet weak var askPickView: UIPickerView!
     override func viewDidLoad() {
