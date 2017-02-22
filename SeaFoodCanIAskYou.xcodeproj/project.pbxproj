@@ -15,6 +15,7 @@
 		D0732B8F1DB138E3003A28B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B8D1DB138E3003A28B8 /* Main.storyboard */; };
 		D0732B941DB138E3003A28B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */; };
 		D0732B9E1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */; };
+		D09440171E4767D0002BBAE3 /* UIViewControllerByProgaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */; };
 		D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099057E1DBB482D00BBB377 /* MapKit.framework */; };
 		D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905801DBB48DF00BBB377 /* MapViewController.swift */; };
 		D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */; };
@@ -34,6 +35,7 @@
 		D0732B931DB138E3003A28B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0732B951DB138E3003A28B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 00-59-00-930.xcassets"; sourceTree = "<group>"; };
+		D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerByProgaming.swift; sourceTree = "<group>"; };
 		D099057E1DBB482D00BBB377 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D09905801DBB48DF00BBB377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelloLineInfo.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */,
 				D018F4231DC30C0400E58069 /* EditAnswer.swift */,
 				D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */,
+				D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */,
 			);
 			name = AskQuestionView;
 			sourceTree = "<group>";
@@ -161,7 +164,7 @@
 				TargetAttributes = {
 					D0732B851DB138E3003A28B8 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8H7X36TF25;
+						DevelopmentTeam = 6J8V4A532L;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -263,6 +266,7 @@
 				D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */,
 				D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
+				D09440171E4767D0002BBAE3 /* UIViewControllerByProgaming.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +393,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H7X36TF25;
+				DEVELOPMENT_TEAM = 6J8V4A532L;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -406,7 +410,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8H7X36TF25;
+				DEVELOPMENT_TEAM = 6J8V4A532L;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
