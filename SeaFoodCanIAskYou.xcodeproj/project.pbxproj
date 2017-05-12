@@ -17,8 +17,6 @@
 		D0732B9E1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */; };
 		D09440171E4767D0002BBAE3 /* UIViewControllerByProgaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */; };
 		D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099057E1DBB482D00BBB377 /* MapKit.framework */; };
-		D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905801DBB48DF00BBB377 /* MapViewController.swift */; };
-		D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */; };
 		D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */; };
 		D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,8 +35,6 @@
 		D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 00-59-00-930.xcassets"; sourceTree = "<group>"; };
 		D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerByProgaming.swift; sourceTree = "<group>"; };
 		D099057E1DBB482D00BBB377 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D09905801DBB48DF00BBB377 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelloLineInfo.swift; sourceTree = "<group>"; };
 		D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestion.swift; sourceTree = "<group>"; };
 		D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAnswerViewController.swift; sourceTree = "<group>"; };
 		D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,15 +75,6 @@
 			name = AskQuestionView;
 			sourceTree = "<group>";
 		};
-		D0230A2B1DBC93FE0025B913 /* YellowLineView */ = {
-			isa = PBXGroup;
-			children = (
-				D09905821DBB61AA00BBB377 /* YelloLineInfo.swift */,
-				D09905801DBB48DF00BBB377 /* MapViewController.swift */,
-			);
-			name = YellowLineView;
-			sourceTree = "<group>";
-		};
 		D0732B7D1DB138E3003A28B8 = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +98,6 @@
 			children = (
 				D0732B891DB138E3003A28B8 /* AppDelegate.swift */,
 				D0230A2A1DBC93CD0025B913 /* AskQuestionView */,
-				D0230A2B1DBC93FE0025B913 /* YellowLineView */,
 				D0732B8D1DB138E3003A28B8 /* Main.storyboard */,
 				D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */,
 				D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */,
@@ -263,8 +249,6 @@
 				D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */,
 				D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */,
 				D055FD2E1E1F631600517E22 /* QuestionAndAnswerDatabase.swift in Sources */,
-				D09905831DBB61AA00BBB377 /* YelloLineInfo.swift in Sources */,
-				D09905811DBB48DF00BBB377 /* MapViewController.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
 				D09440171E4767D0002BBAE3 /* UIViewControllerByProgaming.swift in Sources */,
 			);

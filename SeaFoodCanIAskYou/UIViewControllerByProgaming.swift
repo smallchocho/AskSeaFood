@@ -131,17 +131,17 @@ extension UIViewControllerByProgaming{
         //新增NavigationBarTitle
         self.navigationItem.title = "敢問師父"
         //底色
-        self.view.backgroundColor = UIColor(colorLiteralRed: 0.29, green: 0.0, blue: 0.443, alpha: 1.0)
+        self.view.backgroundColor = UIColor(colorLiteralRed: 94/255, green: 26/255, blue: 132/255, alpha: 1.0)
         //師父的圖片
         let seaFoodImage = UIImageView()
-        seaFoodImage.image = UIImage(named: "師傅去背完成2")
+        seaFoodImage.image = UIImage(named: "饞")
         seaFoodImage.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(seaFoodImage)
         //AutoLayout-position
         seaFoodImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0.0).isActive = true
         seaFoodImage.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 0.0).isActive = true
         //AutoLayout-Size
-        seaFoodImage.widthAnchor.constraint(equalTo: seaFoodImage.heightAnchor, multiplier: 1.35, constant: 0.0).isActive = true
+        seaFoodImage.widthAnchor.constraint(equalTo: seaFoodImage.heightAnchor, multiplier: 1.0, constant: 0.0).isActive = true
         seaFoodImage.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.36, constant: 0.0).isActive = true
         
         //師父我想問Label
