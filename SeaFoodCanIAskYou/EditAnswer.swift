@@ -100,12 +100,12 @@ extension EditAnswer{
     //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
     func addAlertController(title:String?,completion:@escaping (Bool,String?)->()){
         //產生一個輸入新問題的提示頁
-        let newAnswerAlert = UIAlertController(title: "請輸入新問題", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let newAnswerAlert = UIAlertController(title: "請輸入新選項", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         newAnswerAlert.addTextField {(textField:UITextField) in
             textField.placeholder = "請輸入文字"
         }
         if title != nil{
-            newAnswerAlert.title = "請修改問題"
+            newAnswerAlert.title = "請修改選項"
             newAnswerAlert.textFields?.first?.placeholder = nil
             newAnswerAlert.textFields?.first?.text = title
         }
