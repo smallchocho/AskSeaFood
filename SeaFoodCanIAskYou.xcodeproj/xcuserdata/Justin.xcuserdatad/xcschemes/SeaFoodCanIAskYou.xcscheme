@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D0863A2D1ED7296100D16564"
+               BuildableName = "SeaFoodCanIAskYouUITests.xctest"
+               BlueprintName = "SeaFoodCanIAskYouUITests"
+               ReferencedContainer = "container:SeaFoodCanIAskYou.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
