@@ -101,6 +101,12 @@
       "idiom" : "ipad",
       "filename" : "饞icon@167pt.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "饞icon1024pt.png",
+      "scale" : "1x"
     }
   ],
   "info" : {
