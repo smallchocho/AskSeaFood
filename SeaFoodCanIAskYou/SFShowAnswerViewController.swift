@@ -32,11 +32,12 @@ class SFShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPicker
         upSinPowerBarAndSinCounter()
         switch sinPowerCounter {
         case 50:
-            pressentAlertController(alertTitle: "警告", alertMessage: "提醒施主，業力值已經50%了喔\n請讚嘆師父來消除業力，感恩", actionTitle: "好喔", actionHandler: nil)
+            pressentAlertController(alertTitle: "警告", alertMessage: "提醒施主，業力值已經50%了喔\n請讚嘆師父來消除業力，感恩", yesActionTitle: "好喔", yesActionHandler: nil,noActionTitle: nil,noActionHandler: nil)
         case 87:
-            pressentAlertController(alertTitle: "業力引爆！", alertMessage: "提醒施主，業力值已到了87%了喔\n不能再高了，請去敢問師父粉絲團按讚表達你的懺悔", actionTitle: "好喔", actionHandler: { (action) in
+            let yesHandler:(UIAlertAction)->() = { _ in
                 self.openUrlInSafari(url:"https://www.facebook.com/SeaFoodCanIAskYou/")
-            })
+            }
+            self.pressentAlertController(alertTitle: "業力引爆！", alertMessage: "提醒施主，業力值已到了87%了喔\n不能再高了，請去敢問師父粉絲團按讚表達你的懺悔", yesActionTitle: "好喔", yesActionHandler: yesHandler, noActionTitle: nil, noActionHandler: nil)
         default:
             break
         }
@@ -82,20 +83,15 @@ class SFShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPicker
         return ansQuestion![row].answer
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel = view as! UILabel!
-        if view == nil {
-            //if no label there yet
-            pickerLabel = UILabel()
-            //color the label's background
-            //            let hue = CGFloat(row)/CGFloat(askQuestion.count)
-            //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        if let label = view as? UILabel{
+            return label
         }
-        let titleData = ansQuestion![row].answer
-        //這啥？
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
-        pickerLabel!.attributedText = myTitle
-        pickerLabel!.textAlignment = .center
-        return pickerLabel!
+        let pickerLabel = UILabel()
+        let titleString = ansQuestion![row].answer
+        let myTitle = NSAttributedString(string: titleString, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+        pickerLabel.attributedText = myTitle
+        pickerLabel.textAlignment = .center
+        return pickerLabel
     }
     
     func spinAnswers(){
@@ -113,16 +109,6 @@ class SFShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPicker
             }
         })
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 //擴充方法
 extension SFShowAnswerViewController{
@@ -144,10 +130,17 @@ extension SFShowAnswerViewController{
             sinPowerCounter = UserDefaults.standard.integer(forKey: "sinPowerCounter")
         }
     }
-    func pressentAlertController(alertTitle:String?,alertMessage:String?,actionTitle:String?,actionHandler:((UIAlertAction)->Void)?){
+    func pressentAlertController(alertTitle:String?,alertMessage:String?,yesActionTitle:String?,yesActionHandler:((UIAlertAction)->Void)?,noActionTitle:String?,noActionHandler:((UIAlertAction)->Void)?){
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: actionTitle, style: UIAlertActionStyle.cancel, handler: actionHandler)
-        alert.addAction(action)
+        
+        if let yesTitle = yesActionTitle {
+            let yesAction = UIAlertAction(title: yesTitle, style: UIAlertActionStyle.default, handler: yesActionHandler)
+            alert.addAction(yesAction)
+        }
+        if let noTitle = noActionTitle {
+            let noAction = UIAlertAction(title: noTitle, style: UIAlertActionStyle.cancel, handler: noActionHandler)
+            alert.addAction(noAction)
+        }
         present(alert, animated: true, completion: nil)
     }
     func upSinPowerBarAndSinCounter(){

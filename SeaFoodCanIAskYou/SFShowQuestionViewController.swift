@@ -8,14 +8,16 @@
 
 import UIKit
 import RealmSwift
-class SFShowQuestionViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-    var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
+class SFShowQuestionViewController: UIViewController{
+//    var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     let questionPickView = UIPickerView()
-
+    lazy var viewModel:SFShowQuestionViewModel = {
+        return SFShowQuestionViewModel()
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         createUi()
-        loadData()
+        initViewModel()
         //延遲啟動畫面消失的時間
         Thread.sleep(forTimeInterval: 1.4)
     }
@@ -27,111 +29,19 @@ class SFShowQuestionViewController: UIViewController,UIPickerViewDelegate,UIPick
         // Dispose of any resources that can be recreated.
     }
     
+    func initViewModel(){
+        self.viewModel.reloadTableVIew = {
+            [weak self] _ in
+            self?.questionPickView.reloadAllComponents()
+        }
+    }
     
-    //增加array解答數量的方法
-    func addStringArray(array:List<Answer>) -> List<Answer>{
-        let addAnswer = List<Answer>()
-        for _ in 0...10{
-            addAnswer.append(objectsIn: array)
-        }
-        return addAnswer
-    }
-    //傳值
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goShowAnswerViewController"{
-//            let indexPath = questionPickView.selectedRow(inComponent: 0)
-//            let destination = segue.destination as! SFShowAnswerViewController
-//            destination.name = questionAndAnswer[indexPath].question
-//            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
-//        }
-//        if segue.identifier == "goEditQuestion"{
-//            if let destination = segue.destination as? SFEditQuestionViewController{
-//                destination.questionAndAnswer = questionAndAnswer
-//            }
-//        }
-//    }
-}
-//RealM相關
-extension SFShowQuestionViewController{
-    func loadData(){
-        //讀取LacalDatabase
-        try! uiRealm.write {
-            questionAndAnswer = uiRealm.objects(SFQuestionAndAnswerDatabase.self)
-            if uiRealm.objects(SFQuestionAndAnswerDatabase.self).first == nil{
-                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
-                    ["0","Yes or No",
-                     [Answer(value:["Yes"]),
-                      Answer(value:["No"])]
-                    ], update: true)
-                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
-                    ["1","我該告白嗎？",
-                     [Answer(value:["現在不衝更待何時？"]),
-                      Answer(value:["別去，砲灰"])]
-                    ], update: true)
-                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
-                    ["2","中午吃什麼？",
-                     [Answer(value:["霸王豬腳"]),
-                      Answer(value:["自助餐"]),
-                      Answer(value:["金仙蝦捲"]),
-                      Answer(value:["雞肉飯"])]
-                    ], update: true)
-                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
-                    ["3","師父愛吃什麼？",
-                     [Answer(value:["Seafood"]),
-                      Answer(value:["應該是Seafood"]),
-                      Answer(value:["那就Seafood吧"]),
-                      Answer(value:["總之就是Seafood"])]
-                    ], update: true)
-            }
-        }
-        questionAndAnswer = uiRealm.objects(SFQuestionAndAnswerDatabase.self)
-    }
-}
-
-//pickViewDelegate&pickViewDatabase相關
-extension SFShowQuestionViewController{
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return questionAndAnswer.count
-    }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return questionAndAnswer[row].question
-    }
-    //修改pickerView當中的picker本身的相關設定（較省記憶體的版本）
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var pickerLabel = view as! UILabel!
-        if view == nil {
-            //if no label there yet
-            pickerLabel = UILabel()
-            //color the label's background
-            //            let hue = CGFloat(row)/CGFloat(askQuestion.count)
-            //            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
-        }
-        //        let titleData = questionAndAnswer[row].question
-        let myTitle = NSAttributedString(string: questionAndAnswer[row].question, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
-        pickerLabel!.attributedText = myTitle
-        pickerLabel!.textAlignment = .center
-        return pickerLabel!
-    }
-    //調整pickerView的row的寬
-    //    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-    //        return 200
-    //    }
-    //調整pickerView的row的高
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
-    }
-}
-
-//UI相關
-extension SFShowQuestionViewController{
+    //UI相關
     func createUi(){
         //新增NavigationBarTitle
         self.navigationItem.title = "敢問師父"
         //底色
-        self.view.backgroundColor = UIColor(colorLiteralRed: 94/255, green: 26/255, blue: 132/255, alpha: 1.0)
+        self.view.backgroundColor = UIColor(displayP3Red: 94/255, green:  26/255, blue: 132/255, alpha: 1.0)
         //師父的圖片
         let seaFoodImage = UIImageView()
         seaFoodImage.image = UIImage(named: "饞")
@@ -195,7 +105,7 @@ extension SFShowQuestionViewController{
         goToEditQuestion.backgroundColor = UIColor.purple
         goToEditQuestion.layer.cornerRadius = 20
         goToEditQuestion.translatesAutoresizingMaskIntoConstraints = false
-//        self.view.addSubview(goToEditQuestion)
+        //        self.view.addSubview(goToEditQuestion)
         goToEditQuestion.addTarget(self, action: #selector(self.goToEditQuestion), for: UIControlEvents.touchUpInside)
         
         
@@ -215,18 +125,63 @@ extension SFShowQuestionViewController{
         //AutoLayout-size
         stackView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9).isActive = true
         stackView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.0622).isActive = true
-
+        
     }
     func goToSeaFoodAnswer() {
         guard let vc = UIStoryboard(name: SFShowAnswerViewController.className(), bundle: nil).instantiateInitialViewController() as? SFShowAnswerViewController else{ return }
         let indexPath = questionPickView.selectedRow(inComponent: 0)
-        vc.name = questionAndAnswer[indexPath].question
-        vc.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
+        vc.name = self.viewModel.questionAndAnswer[indexPath].question
+        vc.ansQuestion = addStringArray(array: self.viewModel.questionAndAnswer[indexPath].answers)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func goToEditQuestion() {
         guard let vc = UIStoryboard(name: SFEditQuestionViewController.className(), bundle: nil).instantiateInitialViewController() as? SFEditQuestionViewController else{ return }
-        vc.questionAndAnswer = questionAndAnswer
+        vc.questionAndAnswer = viewModel.questionAndAnswer
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    //增加array解答數量
+    func addStringArray(array:List<Answer>) -> List<Answer>{
+        let addAnswer = List<Answer>()
+        for _ in 0...10{
+            addAnswer.append(objectsIn: array)
+        }
+        return addAnswer
+    }
+
 }
+
+
+//pickViewDelegate&pickViewDatabase相關
+extension SFShowQuestionViewController:UIPickerViewDelegate,UIPickerViewDataSource{
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.questionAndAnswer.count
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return viewModel.questionAndAnswer[row].question
+    }
+    //修改pickerView當中的picker本身的相關設定
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        if let label = view as? UILabel{
+            return label
+        }
+        let pickerLabel = UILabel()
+        let titleString = viewModel.questionAndAnswer[row].question
+        let myTitle = NSAttributedString(string: titleString, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 25.0)!,NSForegroundColorAttributeName:UIColor.white])
+        pickerLabel.attributedText = myTitle
+        pickerLabel.textAlignment = .center
+        return pickerLabel
+    }
+    //調整pickerView的row的寬
+    //    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    //        return 200
+    //    }
+    //調整pickerView的row的高
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 30
+    }
+}
+

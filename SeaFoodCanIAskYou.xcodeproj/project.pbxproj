@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		336096EC5EA1E3F60A5117B5 /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */; };
 		D018F4241DC30C0400E58069 /* SFEditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */; };
+		D01F4AE520B026BC009689E7 /* SFShowQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */; };
+		D01F4AE720B07AAB009689E7 /* SFShowAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F4AE620B07AAB009689E7 /* SFShowAnswerViewModel.swift */; };
 		D022846820AC4FF700483B4D /* SFShowAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */; };
 		D022846A20AC515800483B4D /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D022846920AC515800483B4D /* NSObjectExtension.swift */; };
 		D055FD2E1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */; };
@@ -38,6 +40,8 @@
 		4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.release.xcconfig"; sourceTree = "<group>"; };
 		D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFEditAnswerViewController.swift; sourceTree = "<group>"; };
+		D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFShowQuestionViewModel.swift; sourceTree = "<group>"; };
+		D01F4AE620B07AAB009689E7 /* SFShowAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFShowAnswerViewModel.swift; sourceTree = "<group>"; };
 		D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFShowAnswerViewController.storyboard; sourceTree = "<group>"; };
 		D022846920AC515800483B4D /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFQuestionAndAnswerDatabase.swift; sourceTree = "<group>"; };
@@ -92,8 +96,10 @@
 			children = (
 				D0732B8D1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard */,
 				D09440161E4767D0002BBAE3 /* SFShowQuestionViewController.swift */,
+				D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */,
 				D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */,
 				D0F57C311DB73DA800866345 /* SFShowAnswerViewController.swift */,
+				D01F4AE620B07AAB009689E7 /* SFShowAnswerViewModel.swift */,
 				D0EA628520AC531E002019D9 /* SFEditQuestionViewController.storyboard */,
 				D0E196ED1DBF9E6000838B2D /* SFEditQuestionViewController.swift */,
 				D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */,
@@ -329,6 +335,8 @@
 				D055FD2E1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
 				D09440171E4767D0002BBAE3 /* SFShowQuestionViewController.swift in Sources */,
+				D01F4AE520B026BC009689E7 /* SFShowQuestionViewModel.swift in Sources */,
+				D01F4AE720B07AAB009689E7 /* SFShowAnswerViewModel.swift in Sources */,
 				D022846A20AC515800483B4D /* NSObjectExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,7 +479,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 53ZNTUCJHP;
@@ -493,7 +500,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 53ZNTUCJHP;

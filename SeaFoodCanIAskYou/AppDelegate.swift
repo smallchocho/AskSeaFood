@@ -49,9 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tokenString = deviceToken.reduce("",{$0 + String(format:"%02X",$1)})
         print("DEVICE TOKEN = \(tokenString)")
     }
-    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        print("收到訊息了")
-    }
+
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         //設定推播內容
         if #available(iOS 10.0, *) {
