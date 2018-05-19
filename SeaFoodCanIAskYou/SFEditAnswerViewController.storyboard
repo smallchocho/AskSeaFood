@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CHc-fc-LCT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--整理答案-->
+        <scene sceneID="L8S-II-9RT">
+            <objects>
+                <viewController id="CHc-fc-LCT" customClass="SFEditAnswerViewController" customModule="SeaFoodCanIAskYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sxu-je-nig"/>
+                        <viewControllerLayoutGuide type="bottom" id="k1K-G8-quI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5An-Tw-zOG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZbU-q3-Y71">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.0039215686269999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.2156862745" green="0.0039215686269999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="eqG-lX-qzW">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eqG-lX-qzW" id="FV6-NF-V2I">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.2156862745" green="0.0039215686269999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.2156862745" green="0.0078431372550000003" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2156862745" green="0.0039215686269999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZbU-q3-Y71" firstAttribute="leading" secondItem="5An-Tw-zOG" secondAttribute="leading" id="Xpi-vZ-E0q"/>
+                            <constraint firstItem="k1K-G8-quI" firstAttribute="top" secondItem="ZbU-q3-Y71" secondAttribute="bottom" id="YAA-4U-TUY"/>
+                            <constraint firstAttribute="trailing" secondItem="ZbU-q3-Y71" secondAttribute="trailing" id="rNx-eS-cqM"/>
+                            <constraint firstItem="ZbU-q3-Y71" firstAttribute="top" secondItem="5An-Tw-zOG" secondAttribute="top" id="twa-uk-Wlt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pwL-Ad-9OQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="整理答案" id="YyS-nR-gHn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="t4J-NT-9mt">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="askAnswer:" destination="CHc-fc-LCT" id="JhR-Hy-HP7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editAnswerTableView" destination="ZbU-q3-Y71" id="sOA-od-SgY"/>
+                        <outlet property="selectedQuestion" destination="YyS-nR-gHn" id="0z2-Ym-zDL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iea-Pr-l6S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="1151"/>
+        </scene>
+    </scenes>
+</document>

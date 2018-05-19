@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 import RealmSwift
-class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+class SFShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
     @IBOutlet weak var answerPickView: UIPickerView!
     @IBOutlet weak var questionName: UILabel!
     @IBOutlet weak var sinPowerNumber: UILabel!
@@ -125,7 +125,7 @@ class ShowAnswerViewController: UIViewController,UIPickerViewDelegate,UIPickerVi
     
 }
 //擴充方法
-extension ShowAnswerViewController{
+extension SFShowAnswerViewController{
     func openUrlInSafari(url:String){
         if let urlOfSafari = URL(string:url){
             UIApplication.shared.open(urlOfSafari, options: [:], completionHandler: nil)

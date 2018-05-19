@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wdg-Jm-AMU">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--整理問題-->
+        <scene sceneID="Hsz-5u-ud8">
+            <objects>
+                <viewController id="wdg-Jm-AMU" customClass="SFEditQuestionViewController" customModule="SeaFoodCanIAskYou" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MpY-Dw-5EW"/>
+                        <viewControllerLayoutGuide type="bottom" id="o5w-xH-bPA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Ps-Vl-waP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3QZ-vp-ikX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.0039215686269999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="X1O-jt-dFb">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X1O-jt-dFb" id="gaC-eP-Gi1">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.21960784310000001" green="0.0" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.21960784310000001" green="0.0" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2156862745" green="0.0039215686269999999" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3QZ-vp-ikX" firstAttribute="leading" secondItem="1Ps-Vl-waP" secondAttribute="leading" id="Dqo-Th-W8S"/>
+                            <constraint firstItem="3QZ-vp-ikX" firstAttribute="top" secondItem="1Ps-Vl-waP" secondAttribute="top" id="co1-UA-Uh1"/>
+                            <constraint firstAttribute="trailing" secondItem="3QZ-vp-ikX" secondAttribute="trailing" id="y5a-jk-pjM"/>
+                            <constraint firstItem="o5w-xH-bPA" firstAttribute="top" secondItem="3QZ-vp-ikX" secondAttribute="bottom" id="yhL-zn-VYM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IUU-iC-Hil"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="整理問題" id="bRq-J7-mUa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cM4-Fo-SIL">
+                            <color key="tintColor" red="0.21960784310000001" green="0.0" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addNewQuestion:" destination="wdg-Jm-AMU" id="3Qm-hZ-LAC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editQuestionTableView" destination="3QZ-vp-ikX" id="zuZ-Zi-dCv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kqk-hh-9b5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="443" y="297"/>
+        </scene>
+    </scenes>
+</document>

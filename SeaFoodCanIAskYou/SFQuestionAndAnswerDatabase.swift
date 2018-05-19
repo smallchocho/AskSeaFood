@@ -11,7 +11,7 @@ import RealmSwift
 class Answer:Object{
     dynamic var answer = ""
 }
-class QuestionAndAnswerDatabase: Object {
+class SFQuestionAndAnswerDatabase: Object {
     dynamic var id = ""
     dynamic var question = ""
     var answers = List<Answer>()

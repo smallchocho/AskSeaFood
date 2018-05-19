@@ -8,9 +8,9 @@
 
 import UIKit
 import RealmSwift
-class EditQuestion: UIViewController{
+class SFEditQuestionViewController: UIViewController{
     //生成題目跟答案的實體
-    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
+    var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     @IBOutlet weak var editQuestionTableView: UITableView!
     //右上角+號按鈕
     @IBAction func addNewQuestion(_ sender: UIBarButtonItem) {
@@ -28,7 +28,7 @@ class EditQuestion: UIViewController{
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
                     let dateString = dateFormatter.string(from: date)
-                    uiRealm.create(QuestionAndAnswerDatabase.self, value: [dateString,text,[]], update: true)
+                    uiRealm.create(SFQuestionAndAnswerDatabase.self, value: [dateString,text,[]], update: true)
                 }
                 self.editQuestionTableView.reloadData()
             }
@@ -50,20 +50,10 @@ class EditQuestion: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToEditAnswer"{
-            if let destination = segue.destination as? EditAnswer{
-                if let indexPath = editQuestionTableView.indexPathForSelectedRow{
-                    destination.questionAndAnswer = questionAndAnswer
-                    destination.aSelectedQuestion = questionAndAnswer[indexPath.row].question
-                    destination.indexPathOfSelectedQuestion = indexPath
-                }
-            }
-        }
-    }
+
 }
 //UITableView相關的delegate
-extension EditQuestion:UITableViewDelegate,UITableViewDataSource{
+extension SFEditQuestionViewController:UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -76,6 +66,14 @@ extension EditQuestion:UITableViewDelegate,UITableViewDataSource{
         cell.textLabel?.textColor = UIColor.white
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: SFEditAnswerViewController.className(), bundle: nil).instantiateInitialViewController() as? SFEditAnswerViewController else{ return }
+        vc.questionAndAnswer = questionAndAnswer
+        vc.aSelectedQuestion = questionAndAnswer[indexPath.row].question
+        vc.indexPathOfSelectedQuestion = indexPath
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     //每個row右側的驚嘆號標示
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         //產生一個修改問題文字的提示頁
@@ -104,7 +102,7 @@ extension EditQuestion:UITableViewDelegate,UITableViewDataSource{
     }
 }
 //刪除或修改Question的func
-extension EditQuestion{
+extension SFEditQuestionViewController{
     //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
     func addAlertController(title:String?,completion:@escaping (Bool,String?)->()){
         //產生一個輸入新問題的提示頁

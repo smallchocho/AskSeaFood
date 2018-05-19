@@ -8,17 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		336096EC5EA1E3F60A5117B5 /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */; };
-		D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* EditAnswer.swift */; };
-		D055FD2E1E1F631600517E22 /* QuestionAndAnswerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */; };
+		D018F4241DC30C0400E58069 /* SFEditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */; };
+		D022846820AC4FF700483B4D /* SFShowAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */; };
+		D022846A20AC515800483B4D /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D022846920AC515800483B4D /* NSObjectExtension.swift */; };
+		D055FD2E1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */; };
 		D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0732B891DB138E3003A28B8 /* AppDelegate.swift */; };
-		D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0732B8B1DB138E3003A28B8 /* ViewController.swift */; };
-		D0732B8F1DB138E3003A28B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B8D1DB138E3003A28B8 /* Main.storyboard */; };
+		D0732B8F1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B8D1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard */; };
 		D0732B941DB138E3003A28B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */; };
-		D0732B9E1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */; };
-		D09440171E4767D0002BBAE3 /* UIViewControllerByProgaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */; };
+		D0732B9E1DB146A6003A28B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0732B9D1DB146A6003A28B8 /* Assets.xcassets */; };
+		D09440171E4767D0002BBAE3 /* SFShowQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09440161E4767D0002BBAE3 /* SFShowQuestionViewController.swift */; };
 		D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D099057E1DBB482D00BBB377 /* MapKit.framework */; };
-		D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */; };
-		D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */; };
+		D0E196EE1DBF9E6000838B2D /* SFEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E196ED1DBF9E6000838B2D /* SFEditQuestionViewController.swift */; };
+		D0EA628620AC531E002019D9 /* SFEditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EA628520AC531E002019D9 /* SFEditQuestionViewController.storyboard */; };
+		D0EA628820AC53B9002019D9 /* SFEditAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */; };
+		D0F57C321DB73DA800866345 /* SFShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* SFShowAnswerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,21 +37,24 @@
 /* Begin PBXFileReference section */
 		4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.release.xcconfig"; sourceTree = "<group>"; };
-		D018F4231DC30C0400E58069 /* EditAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAnswer.swift; sourceTree = "<group>"; };
-		D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionAndAnswerDatabase.swift; sourceTree = "<group>"; };
+		D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFEditAnswerViewController.swift; sourceTree = "<group>"; };
+		D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFShowAnswerViewController.storyboard; sourceTree = "<group>"; };
+		D022846920AC515800483B4D /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
+		D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFQuestionAndAnswerDatabase.swift; sourceTree = "<group>"; };
 		D056A8802006608400D2EA72 /* SeaFoodCanIAskYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SeaFoodCanIAskYou.entitlements; sourceTree = "<group>"; };
 		D0732B861DB138E3003A28B8 /* SeaFoodCanIAskYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeaFoodCanIAskYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0732B891DB138E3003A28B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0732B8B1DB138E3003A28B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D0732B8E1DB138E3003A28B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D0732B8E1DB138E3003A28B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SFShowQuestionViewController.storyboard; sourceTree = "<group>"; };
 		D0732B931DB138E3003A28B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0732B951DB138E3003A28B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets 00-59-00-930.xcassets"; sourceTree = "<group>"; };
+		D0732B9D1DB146A6003A28B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0863A2E1ED7296100D16564 /* SeaFoodCanIAskYouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeaFoodCanIAskYouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerByProgaming.swift; sourceTree = "<group>"; };
+		D09440161E4767D0002BBAE3 /* SFShowQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFShowQuestionViewController.swift; sourceTree = "<group>"; };
 		D099057E1DBB482D00BBB377 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestion.swift; sourceTree = "<group>"; };
-		D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAnswerViewController.swift; sourceTree = "<group>"; };
+		D0E196ED1DBF9E6000838B2D /* SFEditQuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFEditQuestionViewController.swift; sourceTree = "<group>"; };
+		D0EA628520AC531E002019D9 /* SFEditQuestionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFEditQuestionViewController.storyboard; sourceTree = "<group>"; };
+		D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFEditAnswerViewController.storyboard; sourceTree = "<group>"; };
+		D0F57C311DB73DA800866345 /* SFShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFShowAnswerViewController.swift; sourceTree = "<group>"; };
 		D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -84,12 +90,14 @@
 		D0230A2A1DBC93CD0025B913 /* AskQuestionView */ = {
 			isa = PBXGroup;
 			children = (
-				D0732B8B1DB138E3003A28B8 /* ViewController.swift */,
-				D0F57C311DB73DA800866345 /* ShowAnswerViewController.swift */,
-				D0E196ED1DBF9E6000838B2D /* EditQuestion.swift */,
-				D018F4231DC30C0400E58069 /* EditAnswer.swift */,
-				D055FD2D1E1F631600517E22 /* QuestionAndAnswerDatabase.swift */,
-				D09440161E4767D0002BBAE3 /* UIViewControllerByProgaming.swift */,
+				D0732B8D1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard */,
+				D09440161E4767D0002BBAE3 /* SFShowQuestionViewController.swift */,
+				D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */,
+				D0F57C311DB73DA800866345 /* SFShowAnswerViewController.swift */,
+				D0EA628520AC531E002019D9 /* SFEditQuestionViewController.storyboard */,
+				D0E196ED1DBF9E6000838B2D /* SFEditQuestionViewController.swift */,
+				D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */,
+				D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */,
 			);
 			name = AskQuestionView;
 			sourceTree = "<group>";
@@ -98,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				D0732B881DB138E3003A28B8 /* SeaFoodCanIAskYou */,
+				D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */,
 				D0732B871DB138E3003A28B8 /* Products */,
 				D099057D1DBB482D00BBB377 /* Frameworks */,
 				A40681296C68558143F893DD /* Pods */,
@@ -118,11 +127,11 @@
 			children = (
 				D056A8802006608400D2EA72 /* SeaFoodCanIAskYou.entitlements */,
 				D0732B891DB138E3003A28B8 /* AppDelegate.swift */,
-				D0230A2A1DBC93CD0025B913 /* AskQuestionView */,
-				D0732B8D1DB138E3003A28B8 /* Main.storyboard */,
-				D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */,
-				D0732B9D1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets */,
+				D022846920AC515800483B4D /* NSObjectExtension.swift */,
+				D0732B9D1DB146A6003A28B8 /* Assets.xcassets */,
 				D0732B951DB138E3003A28B8 /* Info.plist */,
+				D0EA628920AC5F73002019D9 /* Database */,
+				D0230A2A1DBC93CD0025B913 /* AskQuestionView */,
 			);
 			path = SeaFoodCanIAskYou;
 			sourceTree = "<group>";
@@ -134,6 +143,14 @@
 				D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0EA628920AC5F73002019D9 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +206,7 @@
 				TargetAttributes = {
 					D0732B851DB138E3003A28B8 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 6J8V4A532L;
+						DevelopmentTeam = 53ZNTUCJHP;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -199,7 +216,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -235,9 +252,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D022846820AC4FF700483B4D /* SFShowAnswerViewController.storyboard in Resources */,
 				D0732B941DB138E3003A28B8 /* LaunchScreen.storyboard in Resources */,
-				D0732B9E1DB146A6003A28B8 /* Assets 00-59-00-930.xcassets in Resources */,
-				D0732B8F1DB138E3003A28B8 /* Main.storyboard in Resources */,
+				D0732B9E1DB146A6003A28B8 /* Assets.xcassets in Resources */,
+				D0732B8F1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard in Resources */,
+				D0EA628620AC531E002019D9 /* SFEditQuestionViewController.storyboard in Resources */,
+				D0EA628820AC53B9002019D9 /* SFEditAnswerViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,13 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0732B8C1DB138E3003A28B8 /* ViewController.swift in Sources */,
-				D018F4241DC30C0400E58069 /* EditAnswer.swift in Sources */,
-				D0E196EE1DBF9E6000838B2D /* EditQuestion.swift in Sources */,
-				D0F57C321DB73DA800866345 /* ShowAnswerViewController.swift in Sources */,
-				D055FD2E1E1F631600517E22 /* QuestionAndAnswerDatabase.swift in Sources */,
+				D018F4241DC30C0400E58069 /* SFEditAnswerViewController.swift in Sources */,
+				D0E196EE1DBF9E6000838B2D /* SFEditQuestionViewController.swift in Sources */,
+				D0F57C321DB73DA800866345 /* SFShowAnswerViewController.swift in Sources */,
+				D055FD2E1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
-				D09440171E4767D0002BBAE3 /* UIViewControllerByProgaming.swift in Sources */,
+				D09440171E4767D0002BBAE3 /* SFShowQuestionViewController.swift in Sources */,
+				D022846A20AC515800483B4D /* NSObjectExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,12 +351,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D0732B8D1DB138E3003A28B8 /* Main.storyboard */ = {
+		D0732B8D1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D0732B8E1DB138E3003A28B8 /* Base */,
 			);
-			name = Main.storyboard;
+			name = SFShowQuestionViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		D0732B921DB138E3003A28B8 /* LaunchScreen.storyboard */ = {
@@ -451,14 +471,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SeaFoodCanIAskYou/SeaFoodCanIAskYou.entitlements;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = 6J8V4A532L;
+				DEVELOPMENT_TEAM = 53ZNTUCJHP;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.SeaFoodCanIAskYou;
+				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.SeaFoodCanIAskYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -473,14 +493,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = SeaFoodCanIAskYou/SeaFoodCanIAskYou.entitlements;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 9;
-				DEVELOPMENT_TEAM = 6J8V4A532L;
+				DEVELOPMENT_TEAM = 53ZNTUCJHP;
 				INFOPLIST_FILE = SeaFoodCanIAskYou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.SeaFoodCanIAskYou;
+				PRODUCT_BUNDLE_IDENTIFIER = co.alphacamp.SeaFoodCanIAskYo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

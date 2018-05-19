@@ -8,9 +8,9 @@
 
 import UIKit
 import RealmSwift
-class EditAnswer: UIViewController {
+class SFEditAnswerViewController: UIViewController {
     var aSelectedQuestion = "沒有問題"
-    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
+    var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     var indexPathOfSelectedQuestion:IndexPath!
     @IBAction func askAnswer(_ sender: UIBarButtonItem) {
         //產生一個輸入新答案的提示頁
@@ -53,7 +53,7 @@ class EditAnswer: UIViewController {
     }
 }
 
-extension EditAnswer:UITableViewDelegate,UITableViewDataSource{
+extension SFEditAnswerViewController:UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -96,7 +96,7 @@ extension EditAnswer:UITableViewDelegate,UITableViewDataSource{
     }
 }
 //刪除或修改Answer的func
-extension EditAnswer{
+extension SFEditAnswerViewController{
     //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
     func addAlertController(title:String?,completion:@escaping (Bool,String?)->()){
         //產生一個輸入新問題的提示頁

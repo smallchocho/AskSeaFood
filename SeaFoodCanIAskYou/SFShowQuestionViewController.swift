@@ -8,8 +8,8 @@
 
 import UIKit
 import RealmSwift
-class UIViewControllerByProgaming: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
-    var questionAndAnswer:Results<QuestionAndAnswerDatabase>!
+class SFShowQuestionViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource{
+    var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     let questionPickView = UIPickerView()
 
     override func viewDidLoad() {
@@ -37,45 +37,45 @@ class UIViewControllerByProgaming: UIViewController,UIPickerViewDelegate,UIPicke
         return addAnswer
     }
     //傳值
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goShowAnswerViewController"{
-            let indexPath = questionPickView.selectedRow(inComponent: 0)
-            let destination = segue.destination as! ShowAnswerViewController
-            destination.name = questionAndAnswer[indexPath].question
-            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
-        }
-        if segue.identifier == "goEditQuestion"{
-            if let destination = segue.destination as? EditQuestion{
-                destination.questionAndAnswer = questionAndAnswer
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goShowAnswerViewController"{
+//            let indexPath = questionPickView.selectedRow(inComponent: 0)
+//            let destination = segue.destination as! SFShowAnswerViewController
+//            destination.name = questionAndAnswer[indexPath].question
+//            destination.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
+//        }
+//        if segue.identifier == "goEditQuestion"{
+//            if let destination = segue.destination as? SFEditQuestionViewController{
+//                destination.questionAndAnswer = questionAndAnswer
+//            }
+//        }
+//    }
 }
 //RealM相關
-extension UIViewControllerByProgaming{
+extension SFShowQuestionViewController{
     func loadData(){
         //讀取LacalDatabase
         try! uiRealm.write {
-            questionAndAnswer = uiRealm.objects(QuestionAndAnswerDatabase.self)
-            if uiRealm.objects(QuestionAndAnswerDatabase.self).first == nil{
-                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+            questionAndAnswer = uiRealm.objects(SFQuestionAndAnswerDatabase.self)
+            if uiRealm.objects(SFQuestionAndAnswerDatabase.self).first == nil{
+                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
                     ["0","Yes or No",
                      [Answer(value:["Yes"]),
                       Answer(value:["No"])]
                     ], update: true)
-                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
                     ["1","我該告白嗎？",
                      [Answer(value:["現在不衝更待何時？"]),
                       Answer(value:["別去，砲灰"])]
                     ], update: true)
-                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
                     ["2","中午吃什麼？",
                      [Answer(value:["霸王豬腳"]),
                       Answer(value:["自助餐"]),
                       Answer(value:["金仙蝦捲"]),
                       Answer(value:["雞肉飯"])]
                     ], update: true)
-                uiRealm.create(QuestionAndAnswerDatabase.self, value:
+                uiRealm.create(SFQuestionAndAnswerDatabase.self, value:
                     ["3","師父愛吃什麼？",
                      [Answer(value:["Seafood"]),
                       Answer(value:["應該是Seafood"]),
@@ -84,12 +84,12 @@ extension UIViewControllerByProgaming{
                     ], update: true)
             }
         }
-        questionAndAnswer = uiRealm.objects(QuestionAndAnswerDatabase.self)
+        questionAndAnswer = uiRealm.objects(SFQuestionAndAnswerDatabase.self)
     }
 }
 
 //pickViewDelegate&pickViewDatabase相關
-extension UIViewControllerByProgaming{
+extension SFShowQuestionViewController{
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return questionAndAnswer.count
     }
@@ -126,7 +126,7 @@ extension UIViewControllerByProgaming{
 }
 
 //UI相關
-extension UIViewControllerByProgaming{
+extension SFShowQuestionViewController{
     func createUi(){
         //新增NavigationBarTitle
         self.navigationItem.title = "敢問師父"
@@ -218,9 +218,15 @@ extension UIViewControllerByProgaming{
 
     }
     func goToSeaFoodAnswer() {
-        performSegue(withIdentifier: "goShowAnswerViewController", sender: nil)
+        guard let vc = UIStoryboard(name: SFShowAnswerViewController.className(), bundle: nil).instantiateInitialViewController() as? SFShowAnswerViewController else{ return }
+        let indexPath = questionPickView.selectedRow(inComponent: 0)
+        vc.name = questionAndAnswer[indexPath].question
+        vc.ansQuestion = addStringArray(array: questionAndAnswer[indexPath].answers)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     func goToEditQuestion() {
-        performSegue(withIdentifier: "goEditQuestion", sender: nil)
+        guard let vc = UIStoryboard(name: SFEditQuestionViewController.className(), bundle: nil).instantiateInitialViewController() as? SFEditQuestionViewController else{ return }
+        vc.questionAndAnswer = questionAndAnswer
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
