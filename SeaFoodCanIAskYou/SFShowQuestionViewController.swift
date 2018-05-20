@@ -131,7 +131,7 @@ class SFShowQuestionViewController: UIViewController{
         guard let vc = UIStoryboard(name: SFShowAnswerViewController.className(), bundle: nil).instantiateInitialViewController() as? SFShowAnswerViewController else{ return }
         let indexPath = questionPickView.selectedRow(inComponent: 0)
         vc.name = self.viewModel.questionAndAnswer[indexPath].question
-        vc.ansQuestion = addStringArray(array: self.viewModel.questionAndAnswer[indexPath].answers)
+        vc.viewModel.ansQuestion = addStringArray(array: self.viewModel.questionAndAnswer[indexPath].answers)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     func goToEditQuestion() {

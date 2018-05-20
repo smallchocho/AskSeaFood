@@ -47,10 +47,10 @@
                                 <rect key="frame" x="300" y="184.5" width="75" height="75"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kp6-Ch-zvZ">
-                                        <rect key="frame" x="13.5" y="39" width="49" height="1"/>
+                                        <rect key="frame" x="13.5" y="40" width="49" height="0.0"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="r8n-oI-10v"/>
+                                            <constraint firstAttribute="height" id="r8n-oI-10v"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMH-nJ-jrr">
@@ -143,9 +143,9 @@
                     <connections>
                         <outlet property="answerPickView" destination="q1m-is-9Pc" id="bwN-tN-pzB"/>
                         <outlet property="barHeightConstraint" destination="r8n-oI-10v" id="k3u-Df-FBb"/>
-                        <outlet property="questionName" destination="WBp-2b-g8L" id="xIr-xw-PMC"/>
-                        <outlet property="sinPowerBar" destination="kp6-Ch-zvZ" id="Mhb-u7-22m"/>
-                        <outlet property="sinPowerNumber" destination="pMH-nJ-jrr" id="7wy-h3-LCr"/>
+                        <outlet property="questionNameLabel" destination="WBp-2b-g8L" id="xIr-xw-PMC"/>
+                        <outlet property="sinPowerBarImageView" destination="kp6-Ch-zvZ" id="Mhb-u7-22m"/>
+                        <outlet property="sinPowerNumberLabel" destination="pMH-nJ-jrr" id="7wy-h3-LCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2rC-Kg-PTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
