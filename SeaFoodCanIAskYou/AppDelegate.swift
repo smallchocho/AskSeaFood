@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import RealmSwift
 import UserNotifications
-let uiRealm = try! Realm()
+let uiRealm = SFRealmProvider.realm()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

@@ -2,11 +2,18 @@
 # platform :ios, '9.0'
 
 target 'SeaFoodCanIAskYou' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
-  pod 'RealmSwift'
-  # Pods for SeaFoodCanIAskYou
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    pod 'RealmSwift'
+    # Pods for SeaFoodCanIAskYou
+    target 'SeaFoodCanIAskYouTests' do
+        inherit! :search_paths
+        pod 'RealmSwift'
+    end
 end
+
+
+
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
