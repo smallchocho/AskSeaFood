@@ -12,14 +12,15 @@ class SFShowAnswerViewModel{
     var sinPowerHeight:CGFloat = 0.0{
         didSet{
             self.reloadSinPowerView?()
-            self.saveSinPowerInfo()
         }
     }
-    var sinPowerCounter = 0{
+    var sinPowerCount = 0{
         didSet{
             self.reloadSinPowerView?()
-            self.saveSinPowerInfo()
         }
+    }
+    var isUpTo87Point:Bool{
+        return self.sinPowerCount >= 87
     }
     var ansQuestion:List<Answer>!
     init() {
@@ -29,35 +30,41 @@ class SFShowAnswerViewModel{
     
     func saveSinPowerInfo(){
         UserDefaults.standard.set(sinPowerHeight, forKey: "sinPowerHeight")
-        UserDefaults.standard.set(sinPowerCounter, forKey: "sinPowerCounter")
+        UserDefaults.standard.set(sinPowerCount, forKey: "sinPowerCounter")
         UserDefaults.standard.synchronize()
     }
+
     func loadSinPowerInfo(){
-        if UserDefaults.standard.float(forKey: "sinPowerHeight") != 0{
+        if UserDefaults.standard.float(forKey: "sinPowerHeight") != 0.0{
             sinPowerHeight = CGFloat(UserDefaults.standard.float(forKey: "sinPowerHeight"))
         }
         if UserDefaults.standard.integer(forKey: "sinPowerCounter") != 0{
-            sinPowerCounter = UserDefaults.standard.integer(forKey: "sinPowerCounter")
+            sinPowerCount = UserDefaults.standard.integer(forKey: "sinPowerCounter")
         }
     }
     
     func upSinPowerBarAndSinCounter(){
-        if sinPowerCounter < 87 && sinPowerCounter >= 80{
-            sinPowerCounter += 7
+        switch sinPowerCount {
+        case let count where count < 87 && count >= 80:
+            sinPowerCount += 7
+        case let count where count < 80:
+            sinPowerCount += 10
+        default:
+            break
         }
-        if sinPowerCounter < 80 {
-            sinPowerCounter += 10
-        }
+        
         if sinPowerHeight < UIScreen.main.bounds.height * 0.324{
             sinPowerHeight += UIScreen.main.bounds.height * 0.036
         }
     }
     func downSinPowerBarAndSinCounter(){
-        if sinPowerCounter <= 87 && sinPowerCounter > 80 {
-            sinPowerCounter -= 7
-        }
-        if sinPowerCounter <= 80 && sinPowerCounter >= 10{
-            self.sinPowerCounter -= 10
+        switch sinPowerCount {
+        case let count where count <= 87 && count > 80:
+             sinPowerCount -= 7
+        case let count where count <= 80 && count >= 10:
+            sinPowerCount -= 10
+        default:
+            break
         }
         
         if self.sinPowerHeight >= UIScreen.main.bounds.height * 0.036{

@@ -25,9 +25,9 @@ class SFShowAnswerViewController: UIViewController{
     }
     //按下問問題按鈕
     @IBAction func askQuestionAgain(_ sender: UIButton) {
-        if self.viewModel.sinPowerCounter < 87 { spinAnswers() }
+        if !self.viewModel.isUpTo87Point { spinAnswers() }
         self.viewModel.upSinPowerBarAndSinCounter()
-        switch self.viewModel.sinPowerCounter {
+        switch self.viewModel.sinPowerCount {
         case 50:
             self.pressentAlertController(alertTitle: "警告", alertMessage: "提醒施主，業力值已經50%了喔\n請讚嘆師父來消除業力，感恩", yesActionTitle: "好喔", yesActionHandler: nil,noActionTitle: nil,noActionHandler: nil)
         case 87:
@@ -48,19 +48,28 @@ class SFShowAnswerViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         //讀取sinPower資料
-        if self.viewModel.sinPowerCounter < 87 { self.spinAnswers() }
-        //動畫顯示在畫面上
-        self.sinPowerNumberLabel.text = String(self.viewModel.sinPowerCounter)
+        if !self.viewModel.isUpTo87Point { self.spinAnswers() }
+        self.reloadSinPowerView()
+        self.viewModel.upSinPowerBarAndSinCounter()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.viewModel.saveSinPowerInfo()
     }
     
     fileprivate func initViewModel(){
         self.viewModel.reloadSinPowerView = {
-            self.sinPowerNumberLabel.text = String(self.viewModel.sinPowerCounter)
-            self.barHeightConstraint.constant = self.viewModel.sinPowerHeight
-            UIView.animate(withDuration: 0.5, animations: {
-                self.view.layoutIfNeeded()
-            })
+            self.reloadSinPowerView()
         }
+    }
+    
+    fileprivate func reloadSinPowerView(){
+        self.sinPowerNumberLabel.text = String(self.viewModel.sinPowerCount)
+        self.barHeightConstraint.constant = self.viewModel.sinPowerHeight
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     fileprivate func spinAnswers(){
