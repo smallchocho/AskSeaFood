@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A29FFF20B516870012382E /* SFBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A29FFE20B516870012382E /* SFBaseViewController.swift */; };
 		C735ECE0B8740303906F62ED /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7771F395398E4E2C9B7B2AA2 /* Pods_SeaFoodCanIAskYou.framework */; };
 		D018F4241DC30C0400E58069 /* SFEditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */; };
 		D01F4AE520B026BC009689E7 /* SFShowQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08A29FFE20B516870012382E /* SFBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFBaseViewController.swift; sourceTree = "<group>"; };
 		158D2D67A938C69458E8B48C /* Pods-SeaFoodCanIAskYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.debug.xcconfig"; sourceTree = "<group>"; };
 		21A302194377F4B6F4E353D9 /* Pods_SeaFoodCanIAskYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64BFC4711F805709805291F3 /* Pods-SeaFoodCanIAskYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		D0230A2A1DBC93CD0025B913 /* AskQuestionView */ = {
 			isa = PBXGroup;
 			children = (
+				08A29FFE20B516870012382E /* SFBaseViewController.swift */,
 				D0732B8D1DB138E3003A28B8 /* SFShowQuestionViewController.storyboard */,
 				D09440161E4767D0002BBAE3 /* SFShowQuestionViewController.swift */,
 				D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */,
@@ -397,6 +400,7 @@
 				D0E196EE1DBF9E6000838B2D /* SFEditQuestionViewController.swift in Sources */,
 				D0F57C321DB73DA800866345 /* SFShowAnswerViewController.swift in Sources */,
 				D055FD2E1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift in Sources */,
+				08A29FFF20B516870012382E /* SFBaseViewController.swift in Sources */,
 				D0732B8A1DB138E3003A28B8 /* AppDelegate.swift in Sources */,
 				D01FEA7E20B3F3F200CC5F25 /* SFRealmProvider.swift in Sources */,
 				D09440171E4767D0002BBAE3 /* SFShowQuestionViewController.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 import RealmSwift
-class SFShowAnswerViewController: UIViewController{
+class SFShowAnswerViewController: SFBaseViewController{
     @IBOutlet weak var answerPickView: UIPickerView!
     @IBOutlet weak var questionNameLabel: UILabel!
     @IBOutlet weak var sinPowerNumberLabel: UILabel!
@@ -113,27 +113,5 @@ extension SFShowAnswerViewController:UIPickerViewDelegate,UIPickerViewDataSource
         pickerLabel.attributedText = myTitle
         pickerLabel.textAlignment = .center
         return pickerLabel
-    }
-}
-
-extension SFShowAnswerViewController{
-    func openUrlInSafari(url:String){
-        if let urlOfSafari = URL(string:url){
-            UIApplication.shared.open(urlOfSafari, options: [:], completionHandler: nil)
-        }
-    }
-    
-    func pressentAlertController(alertTitle:String?,alertMessage:String?,yesActionTitle:String?,yesActionHandler:((UIAlertAction)->Void)?,noActionTitle:String?,noActionHandler:((UIAlertAction)->Void)?){
-        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
-        
-        if let yesTitle = yesActionTitle {
-            let yesAction = UIAlertAction(title: yesTitle, style: UIAlertActionStyle.default, handler: yesActionHandler)
-            alert.addAction(yesAction)
-        }
-        if let noTitle = noActionTitle {
-            let noAction = UIAlertAction(title: noTitle, style: UIAlertActionStyle.cancel, handler: noActionHandler)
-            alert.addAction(noAction)
-        }
-        present(alert, animated: true, completion: nil)
     }
 }

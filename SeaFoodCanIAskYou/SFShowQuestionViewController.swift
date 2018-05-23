@@ -24,11 +24,7 @@ class SFShowQuestionViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         questionPickView.reloadAllComponents()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     func initViewModel(){
         self.viewModel.reloadTableVIew = {
             [weak self] _ in
