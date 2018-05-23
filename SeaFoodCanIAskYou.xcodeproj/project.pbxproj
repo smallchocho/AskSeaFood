@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00AA42AC7D555D3DBD0D3213 /* Pods_SeaFoodCanIAskYou_SeaFoodCanIAskYouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12A401D51C4B95F77838283D /* Pods_SeaFoodCanIAskYou_SeaFoodCanIAskYouTests.framework */; };
-		336096EC5EA1E3F60A5117B5 /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */; };
-		4200A842FE6C08DA9976DEDD /* Pods_SeaFoodCanIAskYouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D7954E1A242BA5442FE079 /* Pods_SeaFoodCanIAskYouTests.framework */; };
-		652C309B4A9F0D24F978DC1E /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01FEA7120B3063700CC5F25 /* Pods_SeaFoodCanIAskYou.framework */; };
+		C735ECE0B8740303906F62ED /* Pods_SeaFoodCanIAskYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7771F395398E4E2C9B7B2AA2 /* Pods_SeaFoodCanIAskYou.framework */; };
 		D018F4241DC30C0400E58069 /* SFEditAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */; };
 		D01F4AE520B026BC009689E7 /* SFShowQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */; };
 		D01F4AE720B07AAB009689E7 /* SFShowAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F4AE620B07AAB009689E7 /* SFShowAnswerViewModel.swift */; };
@@ -29,6 +26,7 @@
 		D0EA628620AC531E002019D9 /* SFEditQuestionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EA628520AC531E002019D9 /* SFEditQuestionViewController.storyboard */; };
 		D0EA628820AC53B9002019D9 /* SFEditAnswerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */; };
 		D0F57C321DB73DA800866345 /* SFShowAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F57C311DB73DA800866345 /* SFShowAnswerViewController.swift */; };
+		DF0AAA541CDE54A4D0BF116E /* Pods_SeaFoodCanIAskYouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A302194377F4B6F4E353D9 /* Pods_SeaFoodCanIAskYouTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,21 +40,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12A401D51C4B95F77838283D /* Pods_SeaFoodCanIAskYou_SeaFoodCanIAskYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou_SeaFoodCanIAskYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.debug.xcconfig"; sourceTree = "<group>"; };
-		5C0B6EAB8DCF985C4A7B9121 /* Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests/Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.debug.xcconfig"; sourceTree = "<group>"; };
-		86056C6F9A6AF56D62C13771 /* Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests/Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.release.xcconfig"; sourceTree = "<group>"; };
-		9DDD1BFCE6E68882379F2F40 /* Pods-SeaFoodCanIAskYouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYouTests/Pods-SeaFoodCanIAskYouTests.release.xcconfig"; sourceTree = "<group>"; };
-		BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.release.xcconfig"; sourceTree = "<group>"; };
+		158D2D67A938C69458E8B48C /* Pods-SeaFoodCanIAskYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.debug.xcconfig"; sourceTree = "<group>"; };
+		21A302194377F4B6F4E353D9 /* Pods_SeaFoodCanIAskYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64BFC4711F805709805291F3 /* Pods-SeaFoodCanIAskYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYou/Pods-SeaFoodCanIAskYou.release.xcconfig"; sourceTree = "<group>"; };
+		7771F395398E4E2C9B7B2AA2 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFEditAnswerViewController.swift; sourceTree = "<group>"; };
 		D01F4AE420B026BC009689E7 /* SFShowQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFShowQuestionViewModel.swift; sourceTree = "<group>"; };
 		D01F4AE620B07AAB009689E7 /* SFShowAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFShowAnswerViewModel.swift; sourceTree = "<group>"; };
 		D01FEA6220B3042700CC5F25 /* SeaFoodCanIAskYouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeaFoodCanIAskYouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01FEA6420B3042700CC5F25 /* SeaFoodCanIAskYouTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeaFoodCanIAskYouTests.swift; sourceTree = "<group>"; };
 		D01FEA6620B3042700CC5F25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D01FEA7120B3063700CC5F25 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D01FEA7320B3067000CC5F25 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D01FEA7520B3067300CC5F25 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01FEA7D20B3F3F200CC5F25 /* SFRealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFRealmProvider.swift; sourceTree = "<group>"; };
 		D022846720AC4FF700483B4D /* SFShowAnswerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFShowAnswerViewController.storyboard; sourceTree = "<group>"; };
 		D022846920AC515800483B4D /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
@@ -74,9 +67,8 @@
 		D0EA628520AC531E002019D9 /* SFEditQuestionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFEditQuestionViewController.storyboard; sourceTree = "<group>"; };
 		D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SFEditAnswerViewController.storyboard; sourceTree = "<group>"; };
 		D0F57C311DB73DA800866345 /* SFShowAnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SFShowAnswerViewController.swift; sourceTree = "<group>"; };
-		D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5D7954E1A242BA5442FE079 /* Pods_SeaFoodCanIAskYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeaFoodCanIAskYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E35646DAE35419D90029D953 /* Pods-SeaFoodCanIAskYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYouTests/Pods-SeaFoodCanIAskYouTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D16538E1CB480A9F28486AEF /* Pods-SeaFoodCanIAskYouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYouTests/Pods-SeaFoodCanIAskYouTests.release.xcconfig"; sourceTree = "<group>"; };
+		EDA5DCB08AEBF168ED04C025 /* Pods-SeaFoodCanIAskYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeaFoodCanIAskYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SeaFoodCanIAskYouTests/Pods-SeaFoodCanIAskYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4200A842FE6C08DA9976DEDD /* Pods_SeaFoodCanIAskYouTests.framework in Frameworks */,
-				00AA42AC7D555D3DBD0D3213 /* Pods_SeaFoodCanIAskYou_SeaFoodCanIAskYouTests.framework in Frameworks */,
+				DF0AAA541CDE54A4D0BF116E /* Pods_SeaFoodCanIAskYouTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D099057F1DBB482D00BBB377 /* MapKit.framework in Frameworks */,
-				336096EC5EA1E3F60A5117B5 /* Pods_SeaFoodCanIAskYou.framework in Frameworks */,
-				652C309B4A9F0D24F978DC1E /* Pods_SeaFoodCanIAskYou.framework in Frameworks */,
+				C735ECE0B8740303906F62ED /* Pods_SeaFoodCanIAskYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,12 +95,10 @@
 		A40681296C68558143F893DD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */,
-				BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */,
-				E35646DAE35419D90029D953 /* Pods-SeaFoodCanIAskYouTests.debug.xcconfig */,
-				9DDD1BFCE6E68882379F2F40 /* Pods-SeaFoodCanIAskYouTests.release.xcconfig */,
-				5C0B6EAB8DCF985C4A7B9121 /* Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.debug.xcconfig */,
-				86056C6F9A6AF56D62C13771 /* Pods-SeaFoodCanIAskYou-SeaFoodCanIAskYouTests.release.xcconfig */,
+				158D2D67A938C69458E8B48C /* Pods-SeaFoodCanIAskYou.debug.xcconfig */,
+				64BFC4711F805709805291F3 /* Pods-SeaFoodCanIAskYou.release.xcconfig */,
+				EDA5DCB08AEBF168ED04C025 /* Pods-SeaFoodCanIAskYouTests.debug.xcconfig */,
+				D16538E1CB480A9F28486AEF /* Pods-SeaFoodCanIAskYouTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -180,13 +168,9 @@
 		D099057D1DBB482D00BBB377 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D01FEA7520B3067300CC5F25 /* RealmSwift.framework */,
-				D01FEA7320B3067000CC5F25 /* Realm.framework */,
-				D01FEA7120B3063700CC5F25 /* Pods_SeaFoodCanIAskYou.framework */,
 				D099057E1DBB482D00BBB377 /* MapKit.framework */,
-				D51970DE3B09F19AB3096B28 /* Pods_SeaFoodCanIAskYou.framework */,
-				D5D7954E1A242BA5442FE079 /* Pods_SeaFoodCanIAskYouTests.framework */,
-				12A401D51C4B95F77838283D /* Pods_SeaFoodCanIAskYou_SeaFoodCanIAskYouTests.framework */,
+				7771F395398E4E2C9B7B2AA2 /* Pods_SeaFoodCanIAskYou.framework */,
+				21A302194377F4B6F4E353D9 /* Pods_SeaFoodCanIAskYouTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,7 +250,7 @@
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -454,7 +438,7 @@
 /* Begin XCBuildConfiguration section */
 		D01FEA6A20B3042800CC5F25 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E35646DAE35419D90029D953 /* Pods-SeaFoodCanIAskYouTests.debug.xcconfig */;
+			baseConfigurationReference = EDA5DCB08AEBF168ED04C025 /* Pods-SeaFoodCanIAskYouTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -486,7 +470,7 @@
 		};
 		D01FEA6B20B3042800CC5F25 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DDD1BFCE6E68882379F2F40 /* Pods-SeaFoodCanIAskYouTests.release.xcconfig */;
+			baseConfigurationReference = D16538E1CB480A9F28486AEF /* Pods-SeaFoodCanIAskYouTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -613,7 +597,7 @@
 		};
 		D0732B991DB138E3003A28B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DF675540DE248CA26A1C8D5 /* Pods-SeaFoodCanIAskYou.debug.xcconfig */;
+			baseConfigurationReference = 158D2D67A938C69458E8B48C /* Pods-SeaFoodCanIAskYou.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -634,7 +618,7 @@
 		};
 		D0732B9A1DB138E3003A28B8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE70E25276CD96B4BA9FD949 /* Pods-SeaFoodCanIAskYou.release.xcconfig */;
+			baseConfigurationReference = 64BFC4711F805709805291F3 /* Pods-SeaFoodCanIAskYou.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
