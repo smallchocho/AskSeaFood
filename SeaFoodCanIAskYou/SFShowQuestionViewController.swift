@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 class SFShowQuestionViewController: UIViewController{
-//    var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     let questionPickView = UIPickerView()
     lazy var viewModel:SFShowQuestionViewModel = {
         return SFShowQuestionViewModel()

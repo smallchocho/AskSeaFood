@@ -19,7 +19,7 @@ class SFShowQuestionViewModel{
     }
     func loadData(){
         
-        questionAndAnswer = uiRealm.objects(SFQuestionAndAnswerDatabase.self)
+        questionAndAnswer = SFRealmManager.main().objects(SFQuestionAndAnswerDatabase.self)
     }
     
     var reloadTableVIew:(()->())?

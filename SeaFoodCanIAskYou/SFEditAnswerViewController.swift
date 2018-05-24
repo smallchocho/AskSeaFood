@@ -8,28 +8,26 @@
 
 import UIKit
 import RealmSwift
-class SFEditAnswerViewController: UIViewController {
+class SFEditAnswerViewController: SFBaseViewController {
     var aSelectedQuestion = "沒有問題"
     var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     var indexPathOfSelectedQuestion:IndexPath!
     @IBAction func askAnswer(_ sender: UIBarButtonItem) {
-        //產生一個輸入新答案的提示頁
-        addAlertController(title: nil) {
-            (bool:Bool,textInTextField:String?) in
-            if bool == true{
-                guard let text = textInTextField else{
-                    print("textInTextField is nil")
-                    return
-                }
-                //把新的答案存入questionAndAnswer
-                try! uiRealm.write {
-                    let answer = Answer(value: [text])
-                    self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers.append(answer)
-                }
-                //重整這個頁面的資料
-                self.editAnswerTableView.reloadData()
+        let yesCompletion:((String?)->())? = {
+            (textInTexfield:String?) in
+            guard let text = textInTexfield else{
+                print("textInTextField is nil")
+                return
             }
+            //把新的答案存入questionAndAnswer
+            SFRealmManager.writeData {
+                let answer = Answer(value: [text])
+                self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers.append(answer)
+            }
+            //重整這個頁面的資料
+            self.editAnswerTableView.reloadData()
         }
+        self.presentTextFieldAlertController(title: "請輸入新問題", message: nil, textInFieldText: nil, placeHolder: "請輸入文字", yesTitle: "確定", noTitle: "取消", yesCompletion: yesCompletion, noCompletion: nil)
     }
     @IBOutlet weak var editAnswerTableView: UITableView!
     @IBOutlet weak var selectedQuestion: UINavigationItem!
@@ -68,65 +66,30 @@ extension SFEditAnswerViewController:UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        //產生一個輸入新答案的提示頁
-        addAlertController(title: questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer){
-            (bool:Bool, textInTextField:String?) in
-            if bool == true{
-                guard let text = textInTextField else{
-                    print("textInTextField is nil")
-                    return
-                }
-                //把修改後的答案存進queAndAnsArray
-                try! uiRealm.write {
-                    self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer = text
-                }
-                //重整這個頁面的資料
-                self.editAnswerTableView.reloadData()
+        let textInFieldText = self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer
+        let yesCompletion:((String?)->())? = {
+            (textInTexfield:String?) in
+            guard let text = textInTexfield else{
+                print("textInTextField is nil")
+                return
             }
+            SFRealmManager.writeData{
+                self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row].answer = text
+            }
+            //重整這個頁面的資料
+            self.editAnswerTableView.reloadData()
         }
+        self.presentTextFieldAlertController(title: "請修改問題", message: nil, textInFieldText: textInFieldText, placeHolder: nil, yesTitle: "確定", noTitle: "取消", yesCompletion: yesCompletion, noCompletion: nil)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //刪除指定的答案
-        try! uiRealm.write {
-            let deletedAnswer = self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row]
-            uiRealm.delete(deletedAnswer)
-        }
+        let deletedAnswer = self.questionAndAnswer[self.indexPathOfSelectedQuestion.row].answers[indexPath.row]
+        SFRealmManager.deleteData(deletedAnswer)
         //重整這個頁面的資料
         self.editAnswerTableView.reloadData()
     }
 }
-//刪除或修改Answer的func
-extension SFEditAnswerViewController{
-    //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
-    func addAlertController(title:String?,completion:@escaping (Bool,String?)->()){
-        //產生一個輸入新問題的提示頁
-        let newAnswerAlert = UIAlertController(title: "請輸入新選項", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        newAnswerAlert.addTextField {(textField:UITextField) in
-            textField.placeholder = "請輸入文字"
-        }
-        if title != nil{
-            newAnswerAlert.title = "請修改選項"
-            newAnswerAlert.textFields?.first?.placeholder = nil
-            newAnswerAlert.textFields?.first?.text = title
-        }
-        
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
-            //如果newQuestionAlert.textFields?[0].text有值且不是空字串，
-            //就新增一個QuestionAndAnswer物件到queAndAnsArray裡面
-            (action:UIAlertAction) in
-            let textInTexfield = newAnswerAlert.textFields?.first?.text
-            if textInTexfield != nil && textInTexfield != ""{
-                completion(true,textInTexfield)
-            }else{
-                completion(false,nil)
-            }
-        }
-        let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: nil)
-        newAnswerAlert.addAction(okAction)
-        newAnswerAlert.addAction(cancelAction)
-        self.present(newAnswerAlert, animated: true, completion: nil)
-    }
-}
+
 
 
 

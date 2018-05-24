@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import RealmSwift
 import UserNotifications
-let uiRealm = SFRealmProvider.realm()
+let mainRealm = SFRealmManager.main()
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //修改NavigationBar的返回鍵的字體顏色
         UINavigationBar.appearance().tintColor = UIColor.black
         configurePushNotification(with: application)
-        SFRealmProvider.setDefaultData()
+        SFRealmManager.setDefaultData()
         return true
     }
     

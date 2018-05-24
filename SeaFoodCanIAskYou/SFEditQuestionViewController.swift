@@ -21,13 +21,12 @@ class SFEditQuestionViewController: SFBaseViewController{
                 return
             }
             //用現在的時間當成key，新增一個新的question，Answers不填入
-            try! uiRealm.write {
-                let date = Date()
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
-                let dateString = dateFormatter.string(from: date)
-                uiRealm.create(SFQuestionAndAnswerDatabase.self, value: [dateString,text,[]], update: true)
-            }
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
+            let dateString = dateFormatter.string(from: date)
+            let data = SFQuestionAndAnswerDatabase(value: [dateString,text,[]])
+            SFRealmManager.addData(data,update:true)
             self.editQuestionTableView.reloadData()
         }
         self.presentTextFieldAlertController(title: "請輸入新問題", message: nil, textInFieldText: nil, placeHolder: "請輸入文字", yesTitle: "確定", noTitle: "取消", yesCompletion: yesCompletion, noCompletion: nil)
@@ -42,11 +41,6 @@ class SFEditQuestionViewController: SFBaseViewController{
     override func viewWillAppear(_ animated: Bool) {
         //然後更新TableView的資料
         self.editQuestionTableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
@@ -81,8 +75,7 @@ extension SFEditQuestionViewController:UITableViewDelegate,UITableViewDataSource
                 print("textInTexfield is nil")
                 return
             }
-            //因為只是修改questionArray的question標題,所以只要修改標題文字
-            try! uiRealm.write {
+            SFRealmManager.writeData {
                 self?.questionAndAnswer[indexPath.row].question = text
             }
             self?.editQuestionTableView.reloadData()
@@ -90,11 +83,9 @@ extension SFEditQuestionViewController:UITableViewDelegate,UITableViewDataSource
         self.presentTextFieldAlertController(title: "請修改問題", message: nil, textInFieldText: textInFieldText, placeHolder: nil, yesTitle: "確定", noTitle: "取消", yesCompletion: yesCompletion, noCompletion: nil)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //刪除指定的題目組(連答案一起被刪除了)
-        try! uiRealm.write {
-            uiRealm.delete(questionAndAnswer[indexPath.row].answers)
-            uiRealm.delete(questionAndAnswer[indexPath.row])
-        }
+        //刪除指定的題目組(需連答案一起被刪除)
+        SFRealmManager.deleatData(questionAndAnswer[indexPath.row].answers)
+        SFRealmManager.deleteData(questionAndAnswer[indexPath.row])
         //重整這個頁面的資料
         self.editQuestionTableView.reloadData()
     }
