@@ -20,8 +20,8 @@ class SFRealmManager {
             
         }
     }
+    //存入基礎資料
     class func setDefaultData(){
-        //存取LacalDatabase
         try! main().write {
             if main().objects(SFQuestionAndAnswerDatabase.self).first == nil{
 
@@ -54,21 +54,25 @@ class SFRealmManager {
             }
         }
     }
+    //資料修改
     class func writeData(_ completion:()->()){
         try! main().write {
             completion()
         }
     }
+    //資料新增
     class func addData(_ object:Object,update:Bool){
         try! main().write {
             main().add(object, update: update)
         }
     }
+    //資料刪除
     class func deleteData(_ object:Object){
         try! main().write {
             main().delete(object)
         }
     }
+    //Sequence資料刪除
     class func deleatData<S: Sequence>(_ objects: S) where S.Iterator.Element: Object{
         try! main().write {
             main().delete(objects)
