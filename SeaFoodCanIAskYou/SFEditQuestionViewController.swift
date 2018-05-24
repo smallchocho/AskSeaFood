@@ -8,31 +8,29 @@
 
 import UIKit
 import RealmSwift
-class SFEditQuestionViewController: UIViewController{
+class SFEditQuestionViewController: SFBaseViewController{
     //生成題目跟答案的實體
     var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!
     @IBOutlet weak var editQuestionTableView: UITableView!
     //右上角+號按鈕
     @IBAction func addNewQuestion(_ sender: UIBarButtonItem) {
-        addAlertController(title: nil) { (bool:Bool, textInTexfield:String?) in
-            if bool == true{
-                //因為這是新增一個新的問題＆答案，
-                //所以要新增一個新的QuestionAndAnswer物件，答案的值則先賦值一個空字串的Array
-                guard let text = textInTexfield  else{
-                    print("textInTextfield is nil")
-                    return
-                }
-                //用現在的時間當成key，新增一個新的question，Answers不填入
-                try! uiRealm.write {
-                    let date = Date()
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
-                    let dateString = dateFormatter.string(from: date)
-                    uiRealm.create(SFQuestionAndAnswerDatabase.self, value: [dateString,text,[]], update: true)
-                }
-                self.editQuestionTableView.reloadData()
+        let yesCompletion:((String?)->())? = {
+            (textInTexfield:String?) in
+            guard let text = textInTexfield  else{
+                print("textInTexfield is nil")
+                return
             }
+            //用現在的時間當成key，新增一個新的question，Answers不填入
+            try! uiRealm.write {
+                let date = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YYYY/MM/DD/HH:mm:ss:SSS"
+                let dateString = dateFormatter.string(from: date)
+                uiRealm.create(SFQuestionAndAnswerDatabase.self, value: [dateString,text,[]], update: true)
+            }
+            self.editQuestionTableView.reloadData()
         }
+        self.presentTextFieldAlertController(title: "請輸入新問題", message: nil, textInFieldText: nil, placeHolder: "請輸入文字", yesTitle: "確定", noTitle: "取消", yesCompletion: yesCompletion, noCompletion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,20 +74,20 @@ extension SFEditQuestionViewController:UITableViewDelegate,UITableViewDataSource
     
     //每個row右側的驚嘆號標示
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        //產生一個修改問題文字的提示頁
-        addAlertController(title: self.questionAndAnswer[indexPath.row].question) { (bool:Bool, textInTexfield:String?) in
-            if bool == true{
-                guard let text = textInTexfield  else{
-                    print("textInTexfield is nil")
-                    return
-                }
-                //因為只是修改questionArray的question標題,所以只要修改標題文字
-                try! uiRealm.write {
-                    self.questionAndAnswer[indexPath.row].question = text
-                }
-                self.editQuestionTableView.reloadData()
+        let textInFieldText = self.questionAndAnswer[indexPath.row].question
+        let yesCompletion:((String?)->())? = {
+            [weak self] (textInTexfield:String?) in
+            guard let text = textInTexfield  else{
+                print("textInTexfield is nil")
+                return
             }
+            //因為只是修改questionArray的question標題,所以只要修改標題文字
+            try! uiRealm.write {
+                self?.questionAndAnswer[indexPath.row].question = text
+            }
+            self?.editQuestionTableView.reloadData()
         }
+        self.presentTextFieldAlertController(title: "請修改問題", message: nil, textInFieldText: textInFieldText, placeHolder: nil, yesTitle: "確定", noTitle: "取消", yesCompletion: yesCompletion, noCompletion: nil)
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //刪除指定的題目組(連答案一起被刪除了)
@@ -101,34 +99,4 @@ extension SFEditQuestionViewController:UITableViewDelegate,UITableViewDataSource
         self.editQuestionTableView.reloadData()
     }
 }
-//刪除或修改Question的func
-extension SFEditQuestionViewController{
-    //1.生成一個AlertController(帶1個textField跟2個button)。2.判斷輸入的title是不是nil。3.依照2的結果回傳一個。
-    func addAlertController(title:String?,completion:@escaping (Bool,String?)->()){
-        //產生一個輸入新問題的提示頁
-        let newQuestionAlert = UIAlertController(title: "請輸入新問題", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        newQuestionAlert.addTextField {(textField:UITextField) in
-            textField.placeholder = "請輸入文字"
-        }
-        if title != nil{
-            newQuestionAlert.title = "請修改問題"
-            newQuestionAlert.textFields?.first?.placeholder = nil
-            newQuestionAlert.textFields?.first?.text = title
-        }
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default){
-            //如果newQuestionAlert.textFields?[0].text有值且不是空字串，
-            //就新增一個QuestionAndAnswer物件到database裡面
-            (action:UIAlertAction) in
-            let textInTexfield = newQuestionAlert.textFields?.first?.text
-            if textInTexfield != nil && textInTexfield != ""{
-                completion(true,textInTexfield)
-            }else{
-                completion(false,nil)
-            }
-        }
-        let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler: nil)
-        newQuestionAlert.addAction(okAction)
-        newQuestionAlert.addAction(cancelAction)
-        self.present(newQuestionAlert, animated: true, completion: nil)
-    }
-}
+

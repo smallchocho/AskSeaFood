@@ -29,12 +29,12 @@ class SFShowAnswerViewController: SFBaseViewController{
         self.viewModel.upSinPowerBarAndSinCounter()
         switch self.viewModel.sinPowerCount {
         case 50:
-            self.pressentAlertController(alertTitle: "警告", alertMessage: "提醒施主，業力值已經50%了喔\n請讚嘆師父來消除業力，感恩", yesActionTitle: "好喔", yesActionHandler: nil,noActionTitle: nil,noActionHandler: nil)
+            self.presentAlertController(alertTitle: "警告", alertMessage: "提醒施主，業力值已經50%了喔\n請讚嘆師父來消除業力，感恩", yesActionTitle: "好喔", yesActionHandler: nil,noActionTitle: nil,noActionHandler: nil)
         case 87:
             let yesHandler:(UIAlertAction)->() = { _ in
                 self.openUrlInSafari(url:"https://www.facebook.com/SeaFoodCanIAskYou/")
             }
-            self.pressentAlertController(alertTitle: "業力引爆！", alertMessage: "提醒施主，業力值已到了87%了喔\n不能再高了，請去敢問師父粉絲團按讚表達你的懺悔", yesActionTitle: "好喔", yesActionHandler: yesHandler, noActionTitle: nil, noActionHandler: nil)
+            self.presentAlertController(alertTitle: "業力引爆！", alertMessage: "提醒施主，業力值已到了87%了喔\n不能再高了，請去敢問師父粉絲團按讚表達你的懺悔", yesActionTitle: "好喔", yesActionHandler: yesHandler, noActionTitle: nil, noActionHandler: nil)
         default:
             break
         }
