@@ -45,10 +45,6 @@ class SFEditAnswerViewController: SFBaseViewController {
         self.editAnswerTableView.reloadData()
         //        print("\n\n\n\n現在的答案數量\(queAndAnsArray[questionIndexPath.row].answer.count)")
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
 
 extension SFEditAnswerViewController:UITableViewDelegate,UITableViewDataSource{

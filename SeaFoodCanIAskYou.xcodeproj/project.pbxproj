@@ -128,7 +128,6 @@
 				D0E196ED1DBF9E6000838B2D /* SFEditQuestionViewController.swift */,
 				D0EA628720AC53B9002019D9 /* SFEditAnswerViewController.storyboard */,
 				D018F4231DC30C0400E58069 /* SFEditAnswerViewController.swift */,
-				D01FEA7D20B3F3F200CC5F25 /* SFRealmManager.swift */,
 			);
 			name = AskQuestionView;
 			sourceTree = "<group>";
@@ -181,6 +180,7 @@
 		D0EA628920AC5F73002019D9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				D01FEA7D20B3F3F200CC5F25 /* SFRealmManager.swift */,
 				D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */,
 			);
 			name = Database;
