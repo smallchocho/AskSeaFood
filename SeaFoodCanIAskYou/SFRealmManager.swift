@@ -66,6 +66,11 @@ class SFRealmManager {
             main().add(object, update: update)
         }
     }
+    class func addData<S:Sequence>(_ objects:S) where S.Iterator.Element:Object{
+        try! main().write {
+            main().delete(objects)
+        }
+    }
     //資料刪除
     class func deleteData(_ object:Object){
         try! main().write {
