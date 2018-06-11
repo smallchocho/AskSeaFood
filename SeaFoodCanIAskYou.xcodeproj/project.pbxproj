@@ -161,7 +161,7 @@
 				D022846920AC515800483B4D /* NSObjectExtension.swift */,
 				D0732B9D1DB146A6003A28B8 /* Assets.xcassets */,
 				D0732B951DB138E3003A28B8 /* Info.plist */,
-				D0EA628920AC5F73002019D9 /* Database */,
+				D0EA628920AC5F73002019D9 /* RealmDatabase */,
 				D0230A2A1DBC93CD0025B913 /* AskQuestionView */,
 			);
 			path = SeaFoodCanIAskYou;
@@ -177,13 +177,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D0EA628920AC5F73002019D9 /* Database */ = {
+		D0EA628920AC5F73002019D9 /* RealmDatabase */ = {
 			isa = PBXGroup;
 			children = (
 				D01FEA7D20B3F3F200CC5F25 /* SFRealmManager.swift */,
 				D055FD2D1E1F631600517E22 /* SFQuestionAndAnswerDatabase.swift */,
 			);
-			name = Database;
+			name = RealmDatabase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
