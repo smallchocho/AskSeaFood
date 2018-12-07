@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+/////
 class SFShowQuestionViewModel{
     var questionAndAnswer:Results<SFQuestionAndAnswerDatabase>!{
         didSet{
