@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+
 class SFRealmManager {
     private init(){}
     class func main() -> Realm {
@@ -64,11 +65,6 @@ class SFRealmManager {
     class func addData(_ object:Object,update:Bool){
         try! main().write {
             main().add(object, update: update)
-        }
-    }
-    class func addData<S:Sequence>(_ objects:S) where S.Iterator.Element:Object{
-        try! main().write {
-            main().delete(objects)
         }
     }
     //資料刪除
